@@ -1,0 +1,128 @@
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-inverted {
+    width: 150px;
+    height: 90px;
+    object-fit: contain;
+    filter: invert(50%);
+    cursor: pointer;
+}
+
+.example-sidenav {
+    user-select: none;
+    background-color: #25262D;
+    border-right: 0px;
+    width: 250px;
+}
+
+.avatar {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
+
+.img-avatar {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+::ng-deep .mat-menu-panel {
+    min-width: 175px !important;
+    border-radius: 0px !important;
+}
+
+.button-toolbar {
+    height: 100%;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.sidenavList h1 {
+    font-weight: 500;
+    color: white;
+}
+
+
+.iconNavList mat-icon {
+    color: white;
+    font-size: 20px;
+}
+
+.iconNavList h2 {
+    margin: 0px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.separator mat-divider {
+    border-top-color: #4e4e4e;
+    border-top-width: 2px;
+    width: 200px;
+}
+
+.mini-profile {
+    padding: 15px;
+}
+
+.mini-profile img {
+    width: 75px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.mini-profile span {
+    color: white;
+}
+
+.rol-profile {
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #1a1c20;
+    border-radius: 20px;
+}
+
+.led {
+    width: 8px;
+    height: 8px;
+    background-color: #ABFF00;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 1px 1px, 
+    inset #304701 0 1px 3px, #89FF00 0 1px 4px;
+}
+
+.miniProducto{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+}
+
+.productoh3{
+    margin: 0px;
+    font-weight: bold;
+    background-color: rgba(253, 163, 104, 0.664);
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 20px;
+}
+
+.productoh4{
+    margin: 0px;
+    font-size: 16px;
+}
+
+.productoh5{
+    margin: 0px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #777777;
+}
