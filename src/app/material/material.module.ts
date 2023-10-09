@@ -21,10 +21,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
   exports: [
+    MatCheckboxModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,

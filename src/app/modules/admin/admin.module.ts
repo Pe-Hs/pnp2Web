@@ -5,11 +5,13 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormulariosComponent } from './pages/formularios/formularios.component';
 
 
 @NgModule({
   declarations: [
-    DashBoardComponent
+    DashBoardComponent,
+    FormulariosComponent
   ],
   imports: [
     CommonModule,

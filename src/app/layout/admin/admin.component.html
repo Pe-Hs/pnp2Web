@@ -1,10 +1,24 @@
-<mat-sidenav-container fullscreen>
+<mat-sidenav-container class="example-sidenav-content" fullscreen>
+
 
     <mat-sidenav #sidenav mode="side" opened [disableClose]="true" class="example-sidenav"
-        [class.mat-elevation-z4]="true">
+        [class.mat-elevation-z5]="true">
+
+        <div class="logo-container" routerLink="/home" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10" >
+            <img class="logo-inverted" src="assets/pnp-logo.png">
+            <div fxLayout="column" fxLayoutAlign="center " >
+                <span class="pnpTitle"> POLICIA NACIONAL DEL PERU</span>
+                <span class="pnpDistrito"> -- Distrito -- </span>
+            </div>
+        </div>
+
+        <div class="separator" fxLayout="row" fxLayoutAlign="center center">
+            <mat-divider></mat-divider>
+        </div>
 
         <div class="sidenavList">
             <mat-selection-list [multiple]="false">
+
                 <mat-list-option routerLink="/admin/dashboard">
                     <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
                         <span><mat-icon inline="true">dashboard</mat-icon></span>
@@ -12,51 +26,53 @@
                     </div>
                 </mat-list-option>
 
-                <mat-list-option routerLink="/admin/usuarios">
+                <mat-list-option routerLink="/admin/denuncias">
                     <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
                         <span><mat-icon inline="true">group</mat-icon></span>
-                        <h2>Gestion de Usuarios</h2>
+                        <h2>Denuncias</h2>
                     </div>
                 </mat-list-option>
 
-                <mat-list-option routerLink="/admin/ventas">
+                <mat-list-option routerLink="/admin/formularios">
                     <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
                         <span><mat-icon inline="true">list</mat-icon></span>
-                        <h2>Gestion de Ventas</h2>
+                        <h2>Formularios</h2>
                     </div>
                 </mat-list-option>
 
-                <mat-list-option routerLink="/admin/productos">
-                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
-                        <span><mat-icon inline="true">list</mat-icon></span>
-                        <h2>Gestion de Productos</h2>
-                    </div>
-                </mat-list-option>
 
-                <mat-list-option routerLink="/admin/insumos">
-                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
-                        <span><mat-icon inline="true">group</mat-icon></span>
-                        <h2>Gestion de Insumos</h2>
-                    </div>
-                </mat-list-option>
-
-                <mat-list-option routerLink="/admin/proveedores">
-                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
-                        <span><mat-icon inline="true">group</mat-icon></span>
-                        <h2>Gestion de Proveedores</h2>
-                    </div>
-                </mat-list-option>
-
-                <mat-list-option routerLink="/admin/ordenesCompra">
-                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
-                        <span><mat-icon inline="true">storefront</mat-icon></span>
-                        <h2>Ordenes de Compra</h2>
-                    </div>
-                </mat-list-option>
             </mat-selection-list>
         </div>
 
     </mat-sidenav>
+
+    <div style="padding: 10px;">
+
+        <mat-toolbar [class.mat-elevation-z2]="true" style="border-radius: 20px;">
+            <mat-toolbar-row>
+
+                <div>
+                    <button (click)="sidenav.toggle()" mat-icon-button>
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="10">
+                    <mat-form-field appearance="standard">
+                        <input matInput placeholder="Buscar...">
+                    </mat-form-field>
+                </div>
+
+                <span class="spacer"></span>
+
+                <button mat-icon-button (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                </button>
+
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+    </div>
 
     <div class="container">
         <router-outlet></router-outlet>

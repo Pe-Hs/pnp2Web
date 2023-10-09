@@ -1,0 +1,34 @@
+<div>
+
+  <h1> <strong> Formularios </strong> </h1>
+
+  <mat-divider></mat-divider>
+
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form>
+      <div style="width: 100%;" *ngFor="let field of formData.formFields">
+        <mat-form-field style="width: 400px;" appearance="outline">
+          <mat-label>{{ field.label }}</mat-label>
+          <ng-container [ngSwitch]="field.type">
+            <input *ngSwitchCase="'text'" matInput [placeholder]="field.placeholder!" [required]="field.required">
+            <input *ngSwitchCase="'email'" matInput type="email" [placeholder]="field.placeholder!"
+              [required]="field.required">
+            <input *ngSwitchCase="'tel'" matInput type="tel" [placeholder]="field.placeholder!"
+              [required]="field.required">
+            <textarea *ngSwitchCase="'textarea'" matInput [placeholder]="field.placeholder!"
+              [required]="field.required"></textarea>
+            <mat-select *ngSwitchCase="'select'" [required]="field.required">
+              <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
+            </mat-select>
+            <mat-checkbox *ngSwitchCase="'checkbox'">{{ field.label }}</mat-checkbox>
+          </ng-container>
+        </mat-form-field>
+      </div>
+      <button type="submit" mat-raised-button color="primary">Enviar</button>
+    </form>
+  </div>
+
+
+
+
+</div>
