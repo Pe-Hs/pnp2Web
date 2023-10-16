@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormulariosComponent implements OnInit {
 
-  controlForm : FormGroup | any;
+  controlForm: FormGroup | any;
 
   typeElement: any
 
@@ -39,7 +39,6 @@ export class FormulariosComponent implements OnInit {
         "required": true,
         "placeholder": "Ingresa tu correo electrónico"
       },
-      
       {
         "label": "Telefono",
         "type": "textarea",

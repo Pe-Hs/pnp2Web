@@ -4,31 +4,44 @@
 
   <mat-divider></mat-divider>
 
-  <div fxLayout="column" fxLayoutAlign="center center">
+  <!-- <div fxLayout="column" fxLayoutAlign="center center">
     <form>
-      <div style="width: 100%;" *ngFor="let field of formData.formFields">
-        <mat-form-field style="width: 400px;" appearance="outline">
-          <mat-label>{{ field.label }}</mat-label>
-          <ng-container [ngSwitch]="field.type">
-            <input *ngSwitchCase="'text'" matInput [placeholder]="field.placeholder!" [required]="field.required">
-            <input *ngSwitchCase="'email'" matInput type="email" [placeholder]="field.placeholder!"
-              [required]="field.required">
-            <input *ngSwitchCase="'tel'" matInput type="tel" [placeholder]="field.placeholder!"
-              [required]="field.required">
-            <textarea *ngSwitchCase="'textarea'" matInput [placeholder]="field.placeholder!"
-              [required]="field.required"></textarea>
-            <mat-select *ngSwitchCase="'select'" [required]="field.required">
-              <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
-            </mat-select>
-            <mat-checkbox *ngSwitchCase="'checkbox'">{{ field.label }}</mat-checkbox>
-          </ng-container>
-        </mat-form-field>
-      </div>
+      <ng-container *ngFor="let field of formData.formFields">
+        <ng-container [ngSwitch]="field.type">
+          <div *ngSwitchCase="'text'">
+            <mat-form-field style="width: 400px;" appearance="outline">
+              <mat-label>{{ field.label }}</mat-label>
+              <input matInput [placeholder]="field.placeholder!" [required]="field.required">
+            </mat-form-field>
+          </div>
+          <div *ngSwitchCase="'email'">
+            <mat-form-field style="width: 400px;" appearance="outline">
+              <mat-label>{{ field.label }}</mat-label>
+              <input matInput type="email" [placeholder]="field.placeholder!" [required]="field.required">
+            </mat-form-field>
+          </div>
+          <div *ngSwitchCase="'tel'">
+            <mat-form-field style="width: 400px;" appearance="outline">
+              <mat-label>{{ field.label }}</mat-label>
+              <input *ngSwitchCase="'tel'" matInput type="tel" [placeholder]="field.placeholder!"
+                [required]="field.required">
+            </mat-form-field>
+          </div>
+          <div *ngSwitchCase="'select'">
+            <mat-form-field style="width: 400px;" appearance="outline">
+              <mat-label>{{ field.label }}</mat-label>
+              <mat-select [required]="field.required">
+                <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </ng-container>
+      </ng-container>
       <button type="submit" mat-raised-button color="primary">Enviar</button>
     </form>
-  </div>
+  </div> -->
 
-
-
+  <a routerLink="../ficha1" > Valoracion de Riesgo en Mujeres Victimas de Violencia</a>
 
 </div>

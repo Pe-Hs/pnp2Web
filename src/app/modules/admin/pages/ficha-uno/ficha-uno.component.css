@@ -1,0 +1,77 @@
+.fichaContainer{
+    padding: 10px;
+}
+
+.stepper-style{
+    border-radius: 20px;
+    background-color: rgb(245, 245, 245);
+}
+
+.stepper-style mat-form-field{
+    width: 250px;
+}
+
+.separator mat-divider {
+    border-top-color: rgb(187, 187, 187);
+    border-top-width: 2px;
+    width: 200px;
+}
+
+.guideCol{
+    padding-top: 15px;
+}
+
+.advert{
+    border-radius: 10px;
+    padding: 15px;
+    align-content: center;
+  
+}
+
+.advert p{
+    margin: 0;
+    color: #4B4B4B;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.advert2 {
+    padding-top: 15px;
+    width: 50%;
+}
+
+.advert2 p{
+    color: #4B4B4B;
+    font-size: 16px;
+    text-align: center;
+}
+
+.advert3{
+    width: 55%;
+    border-radius: 10px;
+    padding: 15px;
+    align-content: center;
+    background-color: #FFBE18;
+}
+
+.advert3 p{
+    margin: 0;
+    text-align: center;
+    color: #d82d2d;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.advert3 span{
+    margin: 0;
+    text-align: center;
+    color: #353535;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+mat-icon{
+    color: rgb(170, 170, 170);
+}
