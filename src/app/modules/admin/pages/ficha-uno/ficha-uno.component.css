@@ -1,13 +1,13 @@
-.fichaContainer{
+.fichaContainer {
     padding: 10px;
 }
 
-.stepper-style{
+.stepper-style {
     border-radius: 20px;
     background-color: rgb(245, 245, 245);
 }
 
-.stepper-style mat-form-field{
+.stepper-style mat-form-field {
     width: 250px;
 }
 
@@ -17,18 +17,18 @@
     width: 200px;
 }
 
-.guideCol{
+.guideCol {
     padding-top: 15px;
 }
 
-.advert{
+.advert {
     border-radius: 10px;
     padding: 15px;
     align-content: center;
-  
+
 }
 
-.advert p{
+.advert p {
     margin: 0;
     color: #4B4B4B;
     font-weight: bold;
@@ -41,13 +41,13 @@
     width: 50%;
 }
 
-.advert2 p{
+.advert2 p {
     color: #4B4B4B;
     font-size: 16px;
     text-align: center;
 }
 
-.advert3{
+.advert3 {
     width: 55%;
     border-radius: 10px;
     padding: 15px;
@@ -55,7 +55,7 @@
     background-color: #FFBE18;
 }
 
-.advert3 p{
+.advert3 p {
     margin: 0;
     text-align: center;
     color: #d82d2d;
@@ -64,7 +64,7 @@
     padding-bottom: 10px;
 }
 
-.advert3 span{
+.advert3 span {
     margin: 0;
     text-align: center;
     color: #353535;
@@ -72,6 +72,49 @@
     font-size: 16px;
 }
 
-mat-icon{
+.advert4 {
+    width: 55%;
+    border-radius: 10px;
+    padding: 15px;
+    align-content: center;
+    background-color: #FFBE18;
+}
+
+.advert4 p {
+    margin: 0;
+    text-align: center;
+    color: #6f14ac;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.advert5 {
+    width: 65%;
+    border-radius: 10px;
+    padding: 15px;
+    align-content: center;
+    background-color: #FFBE18;
+}
+
+.advert5 span {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.advert5 p {
+    margin: 3px;
+    font-size: 15px;
+}
+
+.quest {
+    width: 55%;
+    border-radius: 10px;
+    padding: 15px;
+    align-content: center;
+    background-color: #FFBE18;
+}
+
+mat-icon {
     color: rgb(170, 170, 170);
 }

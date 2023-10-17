@@ -157,7 +157,7 @@
         </form>
     </mat-step>
 
-    <mat-step [stepControl]="controlForm2" [editable]="isEditable">
+    <mat-step [editable]="isEditable">
         <ng-template matStepLabel>Paso 1: Identificar Agreciones</ng-template>
 
         <div>
@@ -228,7 +228,7 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="controlForm2" [editable]="isEditable">
+    <mat-step [editable]="isEditable">
         <ng-template matStepLabel>Paso 2: Nivel de Agrecion</ng-template>
 
         <div>
@@ -240,32 +240,84 @@
 
         <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
 
-            <div class="advert3">
-                <span fxLayoutAlign="center center">Dígale lo siguiente a la víctima: </span>
-                <br>
+            <div class="advert4">
                 <p>"Ahora, indique qué tan graves fueron coda uno de esas agresiones que usted ha señalado en el
                     calendario, de acuerdo a la siguiente escala:"</p>
             </div>
 
+            <br>
+
+            <div class="advert5">
+                <span>Escala de Agrecion:</span>
+                <br>
+                <p> <strong>1.</strong> Cachetadas, empujones, jalones de pelo o sin lesiones ni dolor prolongado.</p>
+                <p> <strong>2.</strong> Puñetazos, patadas, moretones, cortes y/o dolor prolongado.</p>
+                <p> <strong>3.</strong> Golpiza, golpes muy fuertes, quemaduras o huesos rotos.</p>
+                <p> <strong>4.</strong> Amenaza de usar un arma, lesiones en la cabeza, lesiones internas, o lesiones
+                    permanentes.</p>
+                <p> <strong>5.</strong> Uso de arma, heridas por arma (pistola, cuchillo u otros).</p>
+
+                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center">
+                    <span class="spacer"></span>
+                    <h4 style="margin: 5px; color: rgb(68, 68, 68); font-style: italic;">Puede Imprimir esta escala si
+                        es necesario</h4>
+                    <button mat-flat-button color="primary">
+                        <mat-icon style="color: white;">print</mat-icon>
+                        Imprimir
+                    </button>
+                </div>
+
+            </div>
+
+
         </div>
 
-        <form fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center" [formGroup]="controlForm2">
-
-            <mat-form-field appearance="outline">
-                <mat-label>Seleccione la Fecha</mat-label>
-                <input matInput formControlName="secondCtrl" [matDatepicker]="picker2">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-
-            <button mat-raised-button style="background-color: rgb(68, 141, 66); color: white; font-weight: boold;">
-                <mat-icon style="color: white;">add</mat-icon>
-                Agregar
-            </button>
+        <div style="padding-top: 10px;">
+            <h2 style="color: rgb(68, 141, 66);">
+                Seleccione evento de <strong>Agrecion</strong>
+            </h2>
+            <mat-divider></mat-divider>
+            <br>
+        </div>
 
 
-        </form>
+
+        <br>
+
+        <div fxLayout="row" fxLayoutGap="15">
+            <span class="spacer"></span>
+            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+    </mat-step>
+
+    <mat-step [editable]="isEditable">
+        <ng-template matStepLabel>Paso 3: Valoracion de Riesgo</ng-template>
+
+        <div>
+            <h2 style="color: rgb(68, 141, 66);">
+                Preguntar para <strong>Valorar el Riesgo</strong>
+            </h2>
+            <mat-divider></mat-divider>
+        </div>
+
+        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+
+            <div class="advert4">
+                <p>"Ahora, indique qué tan graves fueron coda uno de esas agresiones que usted ha señalado en el
+                    calendario, de acuerdo a la siguiente escala:"</p>
+            </div>
+
+            <br>
+
+            <div *ngFor="let item of preguntasValoracion; let i index">
+                <div class="quest" >
+
+                </div>
+            </div>
+
+
+        </div>
 
         <br>
 
