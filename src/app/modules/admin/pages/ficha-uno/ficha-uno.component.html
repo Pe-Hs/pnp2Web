@@ -1,8 +1,15 @@
 <mat-stepper class="stepper-style " [class.mat-elevation-z2]="true" labelPosition="bottom" linear #stepper>
 
     <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Datos Personales Victima</ng-template>
-        <form [formGroup]="controlForm1">
+        <ng-template matStepLabel>Datos Personales </ng-template>
+        <div>
+            <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
+                Recoleccion de los <strong>Datos Personales de la Agraviada</strong>
+            </h2>
+            <mat-divider></mat-divider>
+        </div>
+
+        <form style="padding-top: 20px;" [formGroup]="controlForm1">
 
             <div fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center center">
 
@@ -367,17 +374,20 @@
         </div>
     </mat-step>
 
-    <mat-step>
+    <mat-step [editable]="isEditable">
         <ng-template matStepLabel>Anexo 1.1</ng-template>
+
         <div>
             <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
-                Factores de <strong>Vulnerabilidad</strong>
+                Anexo Complementario: Factores de <strong>Vulnerabilidad</strong>
             </h2>
             <mat-divider></mat-divider>
+        </div>
 
-            <form [formGroup]="controlForm4">
+        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5">
+            <form [formGroup]="controlForm4" class="anexo2">
 
-                <div style="padding-left: 15px;" *ngFor="let item of anexoPreguntas.formFields">
+                <div *ngFor="let item of anexoPreguntas.formFields">
 
                     <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
                         {{item.subTitle}}
@@ -386,52 +396,56 @@
                         {{item.indicacion}}
                     </h3>
 
-                    <div fxLayout="column" fxLayoutAlign="center start">
 
-                        <ng-container *ngFor="let preg of item.preguntas, index as i">
 
-                            <div>
-                                <p> <strong> {{i + 1 +'. - '}} </strong> {{preg.text}} </p>
+                    <ng-container *ngFor="let preg of item.preguntas, index as i">
+
+                        <div>
+                            <p> <strong> {{i + 1 +'. - '}} </strong> {{preg.text}} </p>
+                        </div>
+
+                        <ng-container [ngSwitch]="preg.type">
+
+                            <div *ngSwitchCase="'select'">
+
+                                <mat-form-field style="width: 100%;" appearance="outline">
+                                    <mat-label>{{ preg.label }}</mat-label>
+                                    <mat-select [formControlName]="'preg' + i">
+                                        <mat-option *ngFor="let option of preg.options" [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
                             </div>
-
-                            <ng-container [ngSwitch]="preg.type">
-
-                                <div style="width: 100%;" *ngSwitchCase="'select'">
-
-                                    <mat-form-field style="width: 50%;" appearance="outline">
-                                        <mat-label>{{ preg.label }}</mat-label>
-                                        <mat-select [formControlName]="'preg' + i">
-                                            <mat-option *ngFor="let option of preg.options" [value]="option">
-                                                {{option}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
-                                </div>
-
-                            </ng-container>
 
                         </ng-container>
 
-                    </div>
+                    </ng-container>
+
+
 
                 </div>
 
             </form>
-
         </div>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+
+
+
+
+        <div fxLayout="row" fxLayoutGap="15">
+            <span class="spacer"></span>
+            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
     </mat-step>
 
-    <mat-step>
+    <mat-step [editable]="isEditable">
         <ng-template matStepLabel>Anexo 1.2</ng-template>
 
         <div>
             <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
-                Caracteristicas de <strong>Ubicacion, Actividades y Señas Fisicas</strong>
+                Anexo Complementario: Caracteristicas de <strong>Ubicacion, Actividades y Señas Fisicas</strong>
             </h2>
             <mat-divider></mat-divider>
         </div>
@@ -445,13 +459,119 @@
 
         </div>
 
+        <div fxLayout="column" fxLayoutAlign="start center">
+            <form style="padding-top: 15px;" [formGroup]="controlForm5" class="anexo2">
+
+                <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                    Ubicacion
+                </h2>
+
+                <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(0,4), index as i">
+
+                    <ng-container [ngSwitch]="field.type">
+                        <div *ngSwitchCase="'textarea'">
+                            <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
+                            <mat-form-field style="width: 100%;" appearance="outline">
+                                <mat-label>{{ field.label }}</mat-label>
+                                <textarea matInput [required]="field.required"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+                <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                    Actividades
+                </h2>
+
+                <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(4,8), index as i">
+
+                    <div style="padding-bottom: 5px;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5">
+                        <div class="anexo2Slide">
+                            <p> <strong> {{i + 1 +'. - '}} </strong> {{field.label}} </p>
+                        </div>
+
+                        <span class="spacer"></span>
+
+                        <div>
+                            <mat-label class="beforeSlide">NO</mat-label>
+                            <mat-slide-toggle color="primary">
+                                <strong>SI</strong>
+                            </mat-slide-toggle>
+                        </div>
+                    </div>
+
+                </ng-container>
+
+                <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                    Señas Fisicas
+                </h2>
+
+                <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(8,11), index as i">
+
+                    <ng-container [ngSwitch]="field.type">
+                        <div *ngSwitchCase="'textarea'">
+                            <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
+                            <mat-form-field style="width: 100%;" appearance="outline">
+                                <mat-label>{{ field.label }}</mat-label>
+                                <textarea matInput [required]="field.required"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+            </form>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutGap="15">
+            <span class="spacer"></span>
+            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+    </mat-step>
+
+    <mat-step [editable]="isEditable">
+        <ng-template matStepLabel>Intruccion Final</ng-template>
+
         <div>
+            <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
+                Finalizacion de la <strong>Evaluacion de Riesgo</strong>
+            </h2>
+            <mat-divider></mat-divider>
+        </div>
+
+        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+
+            <div class="advert4">
+                <p>"Una vez finalizada la entrevista, se procedera a remitir la ficha junto con el expediente tecnico al
+                    juzgado correspondiente, para que emitan las medidas de proteccion pertinentes"</p>
+            </div>
 
         </div>
 
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+        <div fxLayout="column">
+            <p>Observaciones de interes Adicional</p>
+            <textarea matInput></textarea>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="15">
+            <button mat-raised-button color="primary" >
+                <mat-icon inline="true" style="color: white;" >print</mat-icon>
+                Exportar Ficha
+            </button>
+
+            <button mat-raised-button color="primary" >
+                <mat-icon inline="true" style="color: white;" >print</mat-icon>
+                Imprimir Ficha de Valoracion
+            </button>
+
+        </div>
+
+
+        <div fxLayout="row" fxLayoutGap="15">
+            <span class="spacer"></span>
+            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Guardar</button>
         </div>
     </mat-step>
 

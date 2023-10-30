@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { IndicacionesGeneralesComponent } from '../../componentes/indicaciones-generales/indicaciones-generales.component';
 
 @Component({
   selector: 'app-formularios',
@@ -50,7 +52,7 @@ export class FormulariosComponent implements OnInit {
   };
 
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.controlForm = new FormGroup(
@@ -58,6 +60,14 @@ export class FormulariosComponent implements OnInit {
 
       }
     )
+  }
+
+  showIndicaciones(){
+    const matDialogConfig = new MatDialogConfig();
+
+    matDialogConfig.disableClose = true;
+
+    this.matDialog.open( IndicacionesGeneralesComponent ,matDialogConfig)
   }
 
 }

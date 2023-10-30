@@ -12,6 +12,7 @@ export class FichaUnoComponent implements OnInit {
   controlForm2: FormGroup | any
   controlForm3: FormGroup | any
   controlForm4: FormGroup | any
+  controlForm5: FormGroup | any
 
   disableDisca = new FormControl(false)
 
@@ -349,6 +350,77 @@ export class FichaUnoComponent implements OnInit {
     ]
   }
 
+  anexoPreguntas2 = {
+    "formTitle" : "Formulario Anexos 1.2",
+    "formDescription" : "",
+    "formFields" : [
+      {
+        "label": "Descripcion",
+        "text": "Si usted vive con el agresor, por favor reitéreme su dirección y dígame algunas características de la vivienda (casa, departamento, condominio, edificio familiar, color, piso, etc.) y referencias (cercanía a qué avenidas, comercios, u otros que permitan ubicar el lugar) para poder ubicarla.",
+        "type": "textarea",
+        "required": true,        
+      },
+      {
+        "label": "Descripcion",
+        "text": "¿Usted conoce dónde vive el denunciado? Si es así, dígame la dirección y algunas características de esa vivienda (color, piso, reja, etc.) y referencias (cercanía a qué avenidas, comercios, u otros que permitan ubicar el lugar) que permitan ubicarlo.",
+        "type": "textarea",
+        "required": true,        
+      },
+      {
+        "label": "Descripcion",
+        "text": "¿El denunciado la busca en su trabajo, centro de estudio u otro lugar que frecuente? Si es así, indique las direcciones de esos lugares incluyendo sus referencias (cercanía a qué avenidas, comercios, u otros que permitan ubicar el lugar).",
+        "type": "textarea",
+        "required": true,        
+      },
+      {
+        "label": "Descripcion",
+        "text": "¿En qué otro lugar se puede encontrar al denunciado? Por favor, dígame las direcciones de esos lugares, como la casa de familiares, amigos, trabajo, ex parejas, etc.",
+        "type": "textarea",
+        "required": true,        
+      },
+      {
+        "label": "¿El denunciado practica algún deporte violento o de peligro (artes marciales u otro)?",
+        "type": "slide",
+        "checked": false
+      },
+      {
+        "label": "¿El denunciado es policía, del Ejército, Fuerzas Armadas o es agente de seguridad, serenazgo o practica algún pasatiempo de riesgo?",
+        "type": "slide",
+        "checked": false
+      },
+      {
+        "label": "¿En el último año, la violencia física contra usted ha aumentado en gravedad o frecuencia? ",
+        "type": "slide",
+        "checked": false
+      },
+      {
+        "label": "¿El denunciado tiene familiares y/o amistades que han estado en la cárcel o han tenido problemas con la ley? ",
+        "type": "slide",
+        "checked": false
+      },
+      {
+        "label": "Descripcion",
+        "text": "Describa la contextura física del denunciado (alto, corpulento, fuerte, etc.).",
+        "type": "textarea",
+        "required": true,        
+      },
+      {
+        "label": "Descripcion",
+        "text": "Describa las características físicas del agresor que sirvan para identificarlo, como imágenes actuales del rostro y cuerpo del presunto agresor. ¿Nos puede enseñar o entregar ahora mismo una foto actual de él?",
+        "type": "textarea",
+        "required": true,        
+      },
+      {
+        "label": "Descripcion",
+        "text": "¿Sabe si el denunciado tiene algún problema de salud mental, adicciones o si sigue algún tratamiento médico para tales fines?",
+        "type": "textarea",
+        "required": true,        
+      },
+      
+    ],
+
+  }
+
   isEditable = true;
 
   constructor() { }
@@ -410,6 +482,10 @@ export class FichaUnoComponent implements OnInit {
       preg7: new FormControl('',[Validators.required]),
       preg8: new FormControl('',[Validators.required]),
       preg9: new FormControl('',[Validators.required]),
+    })
+
+    this.controlForm5 = new FormGroup({
+
     })
   }
 

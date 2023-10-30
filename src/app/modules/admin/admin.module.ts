@@ -8,13 +8,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormulariosComponent } from './pages/formularios/formularios.component';
 import { FichaUnoComponent } from './pages/ficha-uno/ficha-uno.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndicacionesGeneralesComponent } from './componentes/indicaciones-generales/indicaciones-generales.component';
 
 
 @NgModule({
   declarations: [
     DashBoardComponent,
     FormulariosComponent,
-    FichaUnoComponent
+    FichaUnoComponent,
+    IndicacionesGeneralesComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,22 @@
+.elemFichaContainer{
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.formButton{
+    background-color: rgb(80, 161, 80);
+    color: white;
+}
+
+.elemFicha{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(64, 128, 64);
+    cursor: pointer;
+}
+.elemFicha h3{
+    margin: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}

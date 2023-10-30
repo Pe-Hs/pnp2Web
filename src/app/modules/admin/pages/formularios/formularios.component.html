@@ -41,7 +41,19 @@
       <button type="submit" mat-raised-button color="primary">Enviar</button>
     </form>
   </div> -->
+  <div style="padding-top: 15px;">
+    <button mat-raised-button class="formButton">
+      <mat-icon inline="true" style="color: white;">add</mat-icon>
+      Crear Formulario
+    </button>
+  </div>
 
-  <a routerLink="../ficha1" > Valoracion de Riesgo en Mujeres Victimas de Violencia</a>
+  <div class="elemFichaContainer">
+   
+    <div class="elemFicha" (click)="showIndicaciones()" >
+      <h3>Ficha de Valoracion de Riesgo en Mujeres Victimas de Violencia</h3> 
+    </div>
+  </div>
+  
 
 </div>
