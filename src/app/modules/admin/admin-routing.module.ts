@@ -12,7 +12,7 @@ const routes: Routes = [
       { path: 'dashboard',   component: DashBoardComponent},
       { path: 'formularios', component: FormulariosComponent,
         children: [
-          {path: 'ficha1', component: FichaUnoComponent}
+          {path: 'ficha1', component: FichaUnoComponent, }
         ]
       },
       { path: 'ficha1',      component: FichaUnoComponent},

@@ -78,6 +78,14 @@
     font-size: 16px;
 }
 
+.productos-tabla{
+    padding: 10px;
+}
+
+mat-header-cell, mat-cell{
+    justify-content: center;
+}
+
 .advert4 {
     width: 55%;
     border-radius: 10px;

@@ -1,578 +1,655 @@
-<mat-stepper class="stepper-style " [class.mat-elevation-z2]="true" labelPosition="bottom" linear #stepper>
+<div>
 
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Datos Personales </ng-template>
-        <div>
-            <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
-                Recoleccion de los <strong>Datos Personales de la Agraviada</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
+    <div>
+        <h3 style="color: rgb(68, 141, 66); font-size: 20px;">
+           Ficha de Valoracion de Riesgo en <strong>Mujeres Victimas de Violencia de Pareja</strong>
+        </h3>
+        <mat-divider></mat-divider>
+        <br>
+    </div>
 
-        <form style="padding-top: 20px;" [formGroup]="controlForm1">
+    <mat-stepper class="stepper-style " [class.mat-elevation-z2]="true" labelPosition="bottom" linear #stepper>
 
-            <div fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center center">
-
-                <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Nombre Completo</mat-label>
-                        <mat-icon matPrefix>person</mat-icon>
-                        <input matInput type="text" formControlName="nombreCompleto" placeholder="Ejm. Carlos Alberto">
-                        <mat-error *ngIf="controlForm1.get('nombreCompleto')?.hasError('required')">Ingrese <strong>
-                                su Nombre Completo</strong> </mat-error>
-                        <mat-error *ngIf="controlForm1.get('nombreCompleto')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Letras </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Apellidos Paterno</mat-label>
-                        <mat-icon matPrefix>person</mat-icon>
-                        <input matInput type="text" formControlName="apePaterno">
-                        <mat-error *ngIf="controlForm1.get('apePaterno')?.hasError('required')">Ingrese <strong>
-                                sus Apeliidos </strong> </mat-error>
-                        <mat-error *ngIf="controlForm1.get('apePaterno')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Letras </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Apellidos Materno</mat-label>
-                        <mat-icon matPrefix>person</mat-icon>
-                        <input matInput type="text" formControlName="apeMaterno">
-                        <mat-error *ngIf="controlForm1.get('apeMaterno')?.hasError('required')">Ingrese <strong>
-                                sus Apeliidos </strong> </mat-error>
-                        <mat-error *ngIf="controlForm1.get('apeMaterno')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Letras </strong> </mat-error>
-                    </mat-form-field>
-
-                </div>
-
-                <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="start center">
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Tipo de Documento</mat-label>
-                        <mat-select formControlName="tipoDoc">
-                            <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
-                            <mat-option *ngFor="let item of tipoDocList" [value]="item.tipo">{{item.tipo}}</mat-option>
-                        </mat-select>
-
-                        <mat-error *ngIf="controlForm1.get('tipoDoc')?.hasError('required')"> Debe elegir
-                            <strong> Tipo Documento </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field style="width: 515px;" appearance="outline">
-                        <mat-label>Numero de Documento</mat-label>
-                        <input matInput type="text" formControlName="nroDocumento">
-                        <mat-error *ngIf="controlForm1.get('nroDocumento')?.hasError('required')">Ingrese <strong>
-                                Nro. Documento </strong> </mat-error>
-                        <mat-error *ngIf="controlForm1.get('nroDocumento')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Numeros </strong> </mat-error>
-                    </mat-form-field>
-
-                </div>
-
-                <div class="separator" fxLayout="row" fxLayoutAlign="center center">
-                    <mat-divider></mat-divider>
-                </div>
-
-                <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Edad de la Victima</mat-label>
-                        <input matInput type="text" formControlName="edad">
-                        <mat-error *ngIf="controlForm1.get('edad')?.hasError('required')">Ingrese <strong>
-                                su Edad </strong> </mat-error>
-                        <mat-error *ngIf="controlForm1.get('edad')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Numeros </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Ocupacion</mat-label>
-                        <input matInput type="text" formControlName="ocupa">
-                        <mat-error *ngIf="controlForm1.get('ocupa')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Letras </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Nr. Hijos/as</mat-label>
-                        <input matInput type="text" formControlName="nroHijos">
-                        <mat-error *ngIf="controlForm1.get('nroHijos')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Numeros </strong> </mat-error>
-                    </mat-form-field>
-
-                </div>
-
-                <div class="separator" fxLayout="row" fxLayoutAlign="center center">
-                    <mat-divider></mat-divider>
-                </div>
-
-                <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
-
-                    <p>
-                        <mat-checkbox [formControl]="disableDisca">Presenta Discapacidad</mat-checkbox>
-                    </p>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Tipo de Discapacidad</mat-label>
-                        <mat-select formControlName="discap">
-                            <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
-                            <mat-option *ngFor="let item of tipoDisList" [value]="item.tipo">{{item.tipo}}</mat-option>
-                        </mat-select>
-
-                        <mat-error *ngIf="controlForm1.get('discap')?.hasError('required')"> Debe elegir
-                            <strong> Discapacidad </strong> </mat-error>
-                    </mat-form-field>
-
-
-
-                </div>
-
-                <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Lengua</mat-label>
-                        <mat-select formControlName="tipoLengua">
-                            <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
-                            <mat-option *ngFor="let item of listLengua" [value]="item.tipo">{{item.tipo}}</mat-option>
-                        </mat-select>
-
-                        <mat-error *ngIf="controlForm1.get('tipoDoc')?.hasError('required')"> Debe elegir
-                            <strong> Lengua Materna </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Especifique Lengua</mat-label>
-                        <input matInput type="text" formControlName="especLengua">
-                        <mat-error *ngIf="controlForm1.get('especLengua')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Letras </strong> </mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Identidad Etnica</mat-label>
-                        <input matInput type="text" formControlName="especLengua">
-                        <mat-error *ngIf="controlForm1.get('especLengua')?.hasError('pattern')"> Solo Ingrese
-                            <strong> Letras </strong> </mat-error>
-                    </mat-form-field>
-
-                </div>
-
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Datos Personales </ng-template>
+            <div>
+                <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
+                    Recoleccion de los <strong>Datos Personales de la Agraviada</strong>
+                </h2>
+                <mat-divider></mat-divider>
             </div>
-            <div fxLayout="row">
+    
+            <form style="padding-top: 20px;" [formGroup]="controlForm1">
+    
+                <div fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center center">
+
+                    <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tipo de Documento</mat-label>
+                            <mat-select formControlName="tipoDoc">
+                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                <mat-option *ngFor="let item of tipoDocList" [value]="item.tipo">{{item.tipo}}</mat-option>
+                            </mat-select>
+    
+                            <mat-error *ngIf="controlForm1.get('tipoDoc')?.hasError('required')"> Debe elegir
+                                <strong> Tipo Documento </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field style="width: 410px;" appearance="outline">
+                            <mat-label>Numero de Documento</mat-label>
+                            <input matInput type="text" formControlName="nroDocumento">
+                            <mat-error *ngIf="controlForm1.get('nroDocumento')?.hasError('required')">Ingrese <strong>
+                                    Nro. Documento </strong> </mat-error>
+                            <mat-error *ngIf="controlForm1.get('nroDocumento')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Numeros </strong> </mat-error>
+                        </mat-form-field>
+
+                        <button mat-raised-button type="button" color="primary" >
+                            <mat-icon inline="true" style="color: white; font-size: 20px;" >search</mat-icon>
+                            Buscar
+                        </button>
+    
+                    </div>
+    
+                    <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre Completo</mat-label>
+                            <mat-icon matPrefix>person</mat-icon>
+                            <input matInput type="text" formControlName="nombreCompleto" placeholder="Ejm. Carlos Alberto">
+                            <mat-error *ngIf="controlForm1.get('nombreCompleto')?.hasError('required')">Ingrese <strong>
+                                    su Nombre Completo</strong> </mat-error>
+                            <mat-error *ngIf="controlForm1.get('nombreCompleto')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Letras </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Apellidos Paterno</mat-label>
+                            <mat-icon matPrefix>person</mat-icon>
+                            <input matInput type="text" formControlName="apePaterno">
+                            <mat-error *ngIf="controlForm1.get('apePaterno')?.hasError('required')">Ingrese <strong>
+                                    sus Apeliidos </strong> </mat-error>
+                            <mat-error *ngIf="controlForm1.get('apePaterno')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Letras </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Apellidos Materno</mat-label>
+                            <mat-icon matPrefix>person</mat-icon>
+                            <input matInput type="text" formControlName="apeMaterno">
+                            <mat-error *ngIf="controlForm1.get('apeMaterno')?.hasError('required')">Ingrese <strong>
+                                    sus Apeliidos </strong> </mat-error>
+                            <mat-error *ngIf="controlForm1.get('apeMaterno')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Letras </strong> </mat-error>
+                        </mat-form-field>
+    
+                    </div>  
+                   
+                    <div class="separator" fxLayout="row" fxLayoutAlign="center center">
+                        <mat-divider></mat-divider>
+                    </div>
+    
+                    <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Edad de la Victima</mat-label>
+                            <input matInput type="text" formControlName="edad">
+                            <mat-error *ngIf="controlForm1.get('edad')?.hasError('required')">Ingrese <strong>
+                                    su Edad </strong> </mat-error>
+                            <mat-error *ngIf="controlForm1.get('edad')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Numeros </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ocupacion</mat-label>
+                            <input matInput type="text" formControlName="ocupa">
+                            <mat-error *ngIf="controlForm1.get('ocupa')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Letras </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nr. Hijos/as</mat-label>
+                            <input matInput type="text" formControlName="nroHijos">
+                            <mat-error *ngIf="controlForm1.get('nroHijos')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Numeros </strong> </mat-error>
+                        </mat-form-field>
+    
+                    </div>
+    
+                    <div class="separator" fxLayout="row" fxLayoutAlign="center center">
+                        <mat-divider></mat-divider>
+                    </div>
+    
+                    <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
+    
+                        <p>
+                            <mat-checkbox [formControl]="disableDisca">Presenta Discapacidad</mat-checkbox>
+                        </p>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tipo de Discapacidad</mat-label>
+                            <mat-select formControlName="discap">
+                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                <mat-option *ngFor="let item of tipoDisList" [value]="item.tipo">{{item.tipo}}</mat-option>
+                            </mat-select>
+    
+                            <mat-error *ngIf="controlForm1.get('discap')?.hasError('required')"> Debe elegir
+                                <strong> Discapacidad </strong> </mat-error>
+                        </mat-form-field>
+    
+    
+    
+                    </div>
+    
+                    <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center">
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Lengua</mat-label>
+                            <mat-select formControlName="tipoLengua">
+                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                <mat-option *ngFor="let item of listLengua" [value]="item.tipo">{{item.tipo}}</mat-option>
+                            </mat-select>
+    
+                            <mat-error *ngIf="controlForm1.get('tipoDoc')?.hasError('required')"> Debe elegir
+                                <strong> Lengua Materna </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Especifique Lengua</mat-label>
+                            <input matInput type="text" formControlName="especLengua">
+                            <mat-error *ngIf="controlForm1.get('especLengua')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Letras </strong> </mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                            <mat-label>Identidad Etnica</mat-label>
+                            <input matInput type="text" formControlName="especLengua">
+                            <mat-error *ngIf="controlForm1.get('especLengua')?.hasError('pattern')"> Solo Ingrese
+                                <strong> Letras </strong> </mat-error>
+                        </mat-form-field>
+    
+                    </div>
+    
+                </div>
+                <div fxLayout="row">
+                    <span class="spacer"></span>
+                    <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+    
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Paso 1</ng-template>
+    
+            <div>
+                <h2 style="color: rgb(68, 141, 66);">
+                    <strong>PASO 1: </strong>Identificar Agreciones en los <strong>Ultimos 12 Meses</strong>
+                </h2>
+                <mat-divider></mat-divider>
+            </div>
+    
+            <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+    
+                <div class="advert">
+                    <p>Se le deberá mostrar el calendario de los últimos doce meses a la víctima.</p>
+                </div>
+    
+                <div class="advert2">
+                    <p>Por ejemplo, si la aplica en el mes de agosto, deberá presentarle el calendario de desde septiembre
+                        del
+                        año anterior hasta agosto del presente año. <br><br>
+    
+                        El calendario ayuda a que la mujer recuerde mejor los hechos de violencia y que, por tanto, responda
+                        en
+                        forma más acertada las preguntas de este instrumento.
+                    </p>
+                </div>
+    
+                <div class="advert3">
+                    <span fxLayoutAlign="center center">Dígale lo siguiente a la víctima: </span>
+                    <br>
+                    <p>"Por favor, indiqueme en este calendario las fechas aproximadas en el último año en las que usted fue
+                        agredida físicamente por su pareja o ex pareja."</p>
+                </div>
+    
+            </div>
+    
+            <div style="padding-top: 10px;">
+                <h2 style="color: rgb(68, 141, 66);">
+                    Seleccione las fechas Indicadas por la <strong>Agraviada</strong>
+                </h2>
+                <mat-divider></mat-divider>
+                <br>
+            </div>
+    
+            <form fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center" [formGroup]="controlForm2">
+    
+                <mat-form-field appearance="outline">
+                    <mat-label>Seleccione la Fecha</mat-label>
+                    <input matInput formControlName="secondCtrl" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+    
+                <button mat-raised-button (click)="addFecha()" style="background-color: rgb(68, 141, 66); color: white; font-weight: boold;">
+                    <mat-icon style="color: white;">add</mat-icon>
+                    Agregar
+                </button>
+    
+    
+            </form>
+
+            <br>
+
+            <div class="productos-tabla" >
+                <mat-table [dataSource]="dataSource">
+                    <ng-container matColumnDef="fecha" >
+                        <mat-header-cell *matHeaderCellDef >FECHA</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fecha | date: 'mediumDate'}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="descripcion" >
+                        <mat-header-cell *matHeaderCellDef >DESCRIPCION</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="escala" >
+                        <mat-header-cell *matHeaderCellDef >ESCALA</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.escala}} </mat-cell>
+                    </ng-container>                     
+                    <ng-container matColumnDef="action" >
+                        <mat-header-cell *matHeaderCellDef > OPC.</mat-header-cell>
+                        <mat-cell *matCellDef="let element">                            
+                            <button mat-icon-button>
+                                <mat-icon [ngStyle]="{'color':'grey'}">delete</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container> 
+                    <mat-header-row *matHeaderRowDef="columnasFechaEvento" ></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: columnasFechaEvento " ></mat-row>  
+                </mat-table>
+            </div>
+  
+            <br>
+    
+            <div fxLayout="row" fxLayoutGap="15">
                 <span class="spacer"></span>
+                <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
                 <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
             </div>
-        </form>
-    </mat-step>
-
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Paso 1</ng-template>
-
-        <div>
-            <h2 style="color: rgb(68, 141, 66);">
-                <strong>PASO 1: </strong>Identificar Agreciones en los <strong>Ultimos 12 Meses</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
-
-        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
-
-            <div class="advert">
-                <p>Se le deberá mostrar el calendario de los últimos doce meses a la víctima.</p>
-            </div>
-
-            <div class="advert2">
-                <p>Por ejemplo, si la aplica en el mes de agosto, deberá presentarle el calendario de desde septiembre
-                    del
-                    año anterior hasta agosto del presente año. <br><br>
-
-                    El calendario ayuda a que la mujer recuerde mejor los hechos de violencia y que, por tanto, responda
-                    en
-                    forma más acertada las preguntas de este instrumento.
-                </p>
-            </div>
-
-            <div class="advert3">
-                <span fxLayoutAlign="center center">Dígale lo siguiente a la víctima: </span>
-                <br>
-                <p>"Por favor, indiqueme en este calendario las fechas aproximadas en el último año en las que usted fue
-                    agredida físicamente por su pareja o ex pareja."</p>
-            </div>
-
-        </div>
-
-        <div style="padding-top: 10px;">
-            <h2 style="color: rgb(68, 141, 66);">
-                Seleccione las fechas Indicadas por la <strong>Agraviada</strong>
-            </h2>
-            <mat-divider></mat-divider>
-            <br>
-        </div>
-
-        <form fxLayout="row" fxLayoutGap="15" fxLayoutAlign="center center" [formGroup]="controlForm2">
-
-            <mat-form-field appearance="outline">
-                <mat-label>Seleccione la Fecha</mat-label>
-                <input matInput formControlName="secondCtrl" [matDatepicker]="picker">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-
-            <button mat-raised-button style="background-color: rgb(68, 141, 66); color: white; font-weight: boold;">
-                <mat-icon style="color: white;">add</mat-icon>
-                Agregar
-            </button>
-
-
-        </form>
-
-        <br>
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <span class="spacer"></span>
-            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
-        </div>
-    </mat-step>
-
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Paso 2</ng-template>
-
-        <div>
-            <h2 style="color: rgb(68, 141, 66);">
-                <strong>PASO 2: </strong> Indicar Nivel de <strong>Agrecion</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
-
-        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
-
-            <div class="advert4">
-                <p>"Ahora, indique qué tan graves fueron coda uno de esas agresiones que usted ha señalado en el
-                    calendario, de acuerdo a la siguiente escala:"</p>
-            </div>
-
-            <br>
-
-            <div class="advert5">
-                <span>Escala de Agrecion:</span>
-                <br>
-                <p> <strong>1.</strong> Cachetadas, empujones, jalones de pelo o sin lesiones ni dolor prolongado.</p>
-                <p> <strong>2.</strong> Puñetazos, patadas, moretones, cortes y/o dolor prolongado.</p>
-                <p> <strong>3.</strong> Golpiza, golpes muy fuertes, quemaduras o huesos rotos.</p>
-                <p> <strong>4.</strong> Amenaza de usar un arma, lesiones en la cabeza, lesiones internas, o lesiones
-                    permanentes.</p>
-                <p> <strong>5.</strong> Uso de arma, heridas por arma (pistola, cuchillo u otros).</p>
-
-                <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center">
-                    <span class="spacer"></span>
-                    <h4 style="margin: 5px; color: rgb(68, 68, 68); font-style: italic;">Puede Imprimir esta escala si
-                        es necesario</h4>
-                    <button mat-flat-button color="primary">
-                        <mat-icon style="color: white;">print</mat-icon>
-                        Imprimir
-                    </button>
-                </div>
-
-            </div>
-
-
-        </div>
-
-        <div style="padding-top: 10px;">
-            <h2 style="color: rgb(68, 141, 66);">
-                Seleccione evento de <strong>Agrecion</strong>
-            </h2>
-            <mat-divider></mat-divider>
-            <br>
-        </div>
-
-
-
-        <br>
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <span class="spacer"></span>
-            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
-        </div>
-    </mat-step>
-
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Paso 3</ng-template>
-
-        <div>
-            <h2 style="color: rgb(68, 141, 66);">
-                <strong>PASO 3: </strong> Preguntar para <strong>Valorar el Riesgo</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
-
-        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
-
-            <div class="advert3">
-                <span fxLayoutAlign="center center">Dígale lo siguiente a la víctima: </span>
-                <br>
-                <p>"Ahora le voy hacer una serie de preguntas. Porfavor, responda "SI" o "NO" segun corresponda, le
-                    agradezco su sinceridad"</p>
-            </div>
-
-            <br>
-
-        </div>
-
-
-        <form [formGroup]="controlForm3" (ngSubmit)="onFormSubmit()">
-            <div fxLayout="column" fxLayoutAlign="start center" *ngFor="let item of preguntasValoracion; index as i">
-                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5" class="quest">
-
-                    <div class="quest2">
-                        <p> <strong> {{i + 1 +'. - '}} </strong> {{item.preg}} </p>
-                        <input *ngIf="item.addInput == true" class="inputPreg" matInput type="text"
-                            placeholder="Escriba aqui ...">
-                    </div>
-
-                    <span class="spacer"></span>
-                    <div>
-                        <mat-label class="beforeSlide">NO</mat-label>
-                        <mat-slide-toggle [formControlName]="'preg' + i" color="primary">
-                            <strong>SI</strong>
-                        </mat-slide-toggle>
-                    </div>
-
-                </div>
-                <br>
-            </div>
-
-            <div fxLayout="row" fxLayoutAlign="center center">
-                <button mat-raised-button style="background-color: rgb(89, 175, 89); font-size: 18px; color: white;"
-                    type="submit">
-                    <mat-icon style="color: white;" inline="true">done</mat-icon>
-                    Mostrar Puntaje
-                </button>
-            </div>
-        </form>
-
-        <br>
-
-        <div class="guideCol2" fxLayout="column" fxLayoutAlign="center center">
-
-            <div *ngIf="toggleDivPuntaje == true" [class.mat-elevation-z2]="true" class="nivelRies" fxLayout="column"
-                fxLayoutAlign="center center">
-                <h1 [ngStyle]="{'color': colorRiesgo}"> {{puntajeScore}} </h1>
-                <span>Nivel de Riesgo</span>
-                <h2 [ngStyle]="{'color': colorRiesgo}"> {{textRiesgo}} </h2>
-            </div>
-
-        </div>
-
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <span class="spacer"></span>
-            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
-        </div>
-    </mat-step>
-
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Anexo 1.1</ng-template>
-
-        <div>
-            <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
-                Anexo Complementario: Factores de <strong>Vulnerabilidad</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
-
-        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5">
-            <form [formGroup]="controlForm4" class="anexo2">
-
-                <div *ngFor="let item of anexoPreguntas.formFields">
-
-                    <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
-                        {{item.subTitle}}
-                    </h2>
-                    <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
-                        {{item.indicacion}}
-                    </h3>
-
-
-
-                    <ng-container *ngFor="let preg of item.preguntas, index as i">
-
-                        <div>
-                            <p> <strong> {{i + 1 +'. - '}} </strong> {{preg.text}} </p>
-                        </div>
-
-                        <ng-container [ngSwitch]="preg.type">
-
-                            <div *ngSwitchCase="'select'">
-
-                                <mat-form-field style="width: 100%;" appearance="outline">
-                                    <mat-label>{{ preg.label }}</mat-label>
-                                    <mat-select [formControlName]="'preg' + i">
-                                        <mat-option *ngFor="let option of preg.options" [value]="option">
-                                            {{option}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-
-                            </div>
-
-                        </ng-container>
-
-                    </ng-container>
-
-
-
-                </div>
-
-            </form>
-        </div>
-
-
-
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <span class="spacer"></span>
-            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
-        </div>
-    </mat-step>
-
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Anexo 1.2</ng-template>
-
-        <div>
-            <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
-                Anexo Complementario: Caracteristicas de <strong>Ubicacion, Actividades y Señas Fisicas</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
-
-        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
-
-            <div class="advert4">
-                <p>"La presente informacion debe obtenerse de la victima de forma narrativa y explicativa, para que la
-                    policia pueda indentificar y ubicar al agresor"</p>
-            </div>
-
-        </div>
-
-        <div fxLayout="column" fxLayoutAlign="start center">
-            <form style="padding-top: 15px;" [formGroup]="controlForm5" class="anexo2">
-
-                <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
-                    Ubicacion
+        </mat-step>
+    
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Paso 2</ng-template>
+    
+            <div>
+                <h2 style="color: rgb(68, 141, 66);">
+                    <strong>PASO 2: </strong> Indicar Nivel de <strong>Agrecion</strong>
                 </h2>
-
-                <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(0,4), index as i">
-
-                    <ng-container [ngSwitch]="field.type">
-                        <div *ngSwitchCase="'textarea'">
-                            <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
-                            <mat-form-field style="width: 100%;" appearance="outline">
-                                <mat-label>{{ field.label }}</mat-label>
-                                <textarea matInput [required]="field.required"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </ng-container>
-                </ng-container>
-
-                <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
-                    Actividades
-                </h2>
-
-                <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(4,8), index as i">
-
-                    <div style="padding-bottom: 5px;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5">
-                        <div class="anexo2Slide">
-                            <p> <strong> {{i + 1 +'. - '}} </strong> {{field.label}} </p>
-                        </div>
-
+                <mat-divider></mat-divider>
+            </div>
+    
+            <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+    
+                <div class="advert4">
+                    <p>"Ahora, indique qué tan graves fueron coda uno de esas agresiones que usted ha señalado en el
+                        calendario, de acuerdo a la siguiente escala:"</p>
+                </div>
+    
+                <br>
+    
+                <div class="advert5">
+                    <span>Escala de Agrecion:</span>
+                    <br>
+                    <p> <strong>1.</strong> Cachetadas, empujones, jalones de pelo o sin lesiones ni dolor prolongado.</p>
+                    <p> <strong>2.</strong> Puñetazos, patadas, moretones, cortes y/o dolor prolongado.</p>
+                    <p> <strong>3.</strong> Golpiza, golpes muy fuertes, quemaduras o huesos rotos.</p>
+                    <p> <strong>4.</strong> Amenaza de usar un arma, lesiones en la cabeza, lesiones internas, o lesiones
+                        permanentes.</p>
+                    <p> <strong>5.</strong> Uso de arma, heridas por arma (pistola, cuchillo u otros).</p>
+    
+                    <div fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center center">
                         <span class="spacer"></span>
+                        <h4 style="margin: 5px; color: rgb(68, 68, 68); font-style: italic;">Puede Imprimir esta escala si
+                            es necesario</h4>
+                        <button mat-flat-button color="primary">
+                            <mat-icon style="color: white;">print</mat-icon>
+                            Imprimir
+                        </button>
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+            <div style="padding-top: 10px;">
+                <h2 style="color: rgb(68, 141, 66);">
+                    Seleccione evento de <strong>Agrecion</strong>
+                </h2>
+                <mat-divider></mat-divider>
+                <br>
+            </div>  
 
+            <br>
+
+            <div class="productos-tabla" >
+                <mat-table [dataSource]="dataSource">
+                    <ng-container matColumnDef="fecha" >
+                        <mat-header-cell *matHeaderCellDef >FECHA</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fecha | date: 'mediumDate'}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="descripcion" >
+                        <mat-header-cell *matHeaderCellDef >DESCRIPCION</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="escala" >
+                        <mat-header-cell *matHeaderCellDef >ESCALA</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.escala}} </mat-cell>
+                    </ng-container>                     
+                    <ng-container matColumnDef="action" >
+                        <mat-header-cell *matHeaderCellDef > OPC.</mat-header-cell>
+                        <mat-cell *matCellDef="let element, index as i"> 
+                            <button mat-icon-button (click)="editarEvento(element)" >
+                                <mat-icon [ngStyle]="{'color':'grey'}">edit</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="borrarEvento(i)" >
+                                <mat-icon [ngStyle]="{'color':'grey'}">delete</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container> 
+                    <mat-header-row *matHeaderRowDef="columnasFechaEvento" ></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: columnasFechaEvento " ></mat-row>  
+                </mat-table>
+            </div>
+    
+            <div fxLayout="row" fxLayoutGap="15">
+                <span class="spacer"></span>
+                <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+                <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+        </mat-step>
+    
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Paso 3</ng-template>
+    
+            <div>
+                <h2 style="color: rgb(68, 141, 66);">
+                    <strong>PASO 3: </strong> Preguntar para <strong>Valorar el Riesgo</strong>
+                </h2>
+                <mat-divider></mat-divider>
+            </div>
+    
+            <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+    
+                <div class="advert3">
+                    <span fxLayoutAlign="center center">Dígale lo siguiente a la víctima: </span>
+                    <br>
+                    <p>"Ahora le voy hacer una serie de preguntas. Porfavor, responda "SI" o "NO" segun corresponda, le
+                        agradezco su sinceridad"</p>
+                </div>
+    
+                <br>
+    
+            </div>
+    
+    
+            <form [formGroup]="controlForm3" (ngSubmit)="onFormSubmit()">
+                <div fxLayout="column" fxLayoutAlign="start center" *ngFor="let item of preguntasValoracion; index as i">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5" class="quest">
+    
+                        <div class="quest2">
+                            <p> <strong> {{i + 1 +'. - '}} </strong> {{item.preg}} </p>
+                            <input *ngIf="item.addInput == true" class="inputPreg" matInput type="text"
+                                placeholder="Escriba aqui ...">
+                        </div>
+    
+                        <span class="spacer"></span>
                         <div>
                             <mat-label class="beforeSlide">NO</mat-label>
-                            <mat-slide-toggle color="primary">
+                            <mat-slide-toggle [formControlName]="'preg' + i" color="primary">
                                 <strong>SI</strong>
                             </mat-slide-toggle>
                         </div>
+    
                     </div>
-
-                </ng-container>
-
-                <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
-                    Señas Fisicas
-                </h2>
-
-                <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(8,11), index as i">
-
-                    <ng-container [ngSwitch]="field.type">
-                        <div *ngSwitchCase="'textarea'">
-                            <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
-                            <mat-form-field style="width: 100%;" appearance="outline">
-                                <mat-label>{{ field.label }}</mat-label>
-                                <textarea matInput [required]="field.required"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </ng-container>
-                </ng-container>
-
+                    <br>
+                </div>
+    
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <button mat-raised-button style="background-color: rgb(89, 175, 89); font-size: 18px; color: white;"
+                        type="submit">
+                        <mat-icon style="color: white;" inline="true">done</mat-icon>
+                        Mostrar Puntaje
+                    </button>
+                </div>
             </form>
-        </div>
-
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <span class="spacer"></span>
-            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
-        </div>
-    </mat-step>
-
-    <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Intruccion Final</ng-template>
-
-        <div>
-            <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
-                Finalizacion de la <strong>Evaluacion de Riesgo</strong>
-            </h2>
-            <mat-divider></mat-divider>
-        </div>
-
-        <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
-
-            <div class="advert4">
-                <p>"Una vez finalizada la entrevista, se procedera a remitir la ficha junto con el expediente tecnico al
-                    juzgado correspondiente, para que emitan las medidas de proteccion pertinentes"</p>
+    
+            <br>
+    
+            <div class="guideCol2" fxLayout="column" fxLayoutAlign="center center">
+    
+                <div *ngIf="toggleDivPuntaje == true" [class.mat-elevation-z2]="true" class="nivelRies" fxLayout="column"
+                    fxLayoutAlign="center center">
+                    <h1 [ngStyle]="{'color': colorRiesgo}"> {{puntajeScore}} </h1>
+                    <span>Nivel de Riesgo</span>
+                    <h2 [ngStyle]="{'color': colorRiesgo}"> {{textRiesgo}} </h2>
+                </div>
+    
             </div>
-
-        </div>
-
-        <div fxLayout="column">
-            <p>Observaciones de interes Adicional</p>
-            <textarea matInput></textarea>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <button mat-raised-button color="primary" >
-                <mat-icon inline="true" style="color: white;" >print</mat-icon>
-                Exportar Ficha
-            </button>
-
-            <button mat-raised-button color="primary" >
-                <mat-icon inline="true" style="color: white;" >print</mat-icon>
-                Imprimir Ficha de Valoracion
-            </button>
-
-        </div>
-
-
-        <div fxLayout="row" fxLayoutGap="15">
-            <span class="spacer"></span>
-            <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-            <button mat-raised-button color="primary" matStepperNext>Guardar</button>
-        </div>
-    </mat-step>
-
-</mat-stepper>
+    
+    
+            <div fxLayout="row" fxLayoutGap="15">
+                <span class="spacer"></span>
+                <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+                <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+        </mat-step>
+    
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Anexo 1.1</ng-template>
+    
+            <div>
+                <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
+                    Anexo Complementario: Factores de <strong>Vulnerabilidad</strong>
+                </h2>
+                <mat-divider></mat-divider>
+            </div>
+    
+            <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5">
+                <form [formGroup]="controlForm4" class="anexo2">
+    
+                    <div *ngFor="let item of anexoPreguntas.formFields">
+    
+                        <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                            {{item.subTitle}}
+                        </h2>
+                        <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
+                            {{item.indicacion}}
+                        </h3>
+    
+    
+    
+                        <ng-container *ngFor="let preg of item.preguntas, index as i">
+    
+                            <div>
+                                <p> <strong> {{i + 1 +'. - '}} </strong> {{preg.text}} </p>
+                            </div>
+    
+                            <ng-container [ngSwitch]="preg.type">
+    
+                                <div *ngSwitchCase="'select'">
+    
+                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                        <mat-label>{{ preg.label }}</mat-label>
+                                        <mat-select [formControlName]="'preg' + i">
+                                            <mat-option *ngFor="let option of preg.options" [value]="option">
+                                                {{option}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+    
+                                </div>
+    
+                            </ng-container>
+    
+                        </ng-container>
+    
+    
+    
+                    </div>
+    
+                </form>
+            </div>
+    
+    
+    
+    
+            <div fxLayout="row" fxLayoutGap="15">
+                <span class="spacer"></span>
+                <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+                <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+        </mat-step>
+    
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Anexo 1.2</ng-template>
+    
+            <div>
+                <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
+                    Anexo Complementario: Caracteristicas de <strong>Ubicacion, Actividades y Señas Fisicas</strong>
+                </h2>
+                <mat-divider></mat-divider>
+            </div>
+    
+            <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+    
+                <div class="advert4">
+                    <p>"La presente informacion debe obtenerse de la victima de forma narrativa y explicativa, para que la
+                        policia pueda indentificar y ubicar al agresor"</p>
+                </div>
+    
+            </div>
+    
+            <div fxLayout="column" fxLayoutAlign="start center">
+                <form style="padding-top: 15px;" [formGroup]="controlForm5" class="anexo2">
+    
+                    <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                        Ubicacion
+                    </h2>
+    
+                    <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(0,4), index as i">
+    
+                        <ng-container [ngSwitch]="field.type">
+                            <div *ngSwitchCase="'textarea'">
+                                <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
+                                <mat-form-field style="width: 100%;" appearance="outline">
+                                    <mat-label>{{ field.label }}</mat-label>
+                                    <textarea matInput [required]="field.required"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+    
+                    <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                        Actividades
+                    </h2>
+    
+                    <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(4,8), index as i">
+    
+                        <div style="padding-bottom: 5px;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5">
+                            <div class="anexo2Slide">
+                                <p> <strong> {{i + 1 +'. - '}} </strong> {{field.label}} </p>
+                            </div>
+    
+                            <span class="spacer"></span>
+    
+                            <div>
+                                <mat-label class="beforeSlide">NO</mat-label>
+                                <mat-slide-toggle color="primary">
+                                    <strong>SI</strong>
+                                </mat-slide-toggle>
+                            </div>
+                        </div>
+    
+                    </ng-container>
+    
+                    <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                        Señas Fisicas
+                    </h2>
+    
+                    <ng-container *ngFor="let field of anexoPreguntas2.formFields.slice(8,11), index as i">
+    
+                        <ng-container [ngSwitch]="field.type">
+                            <div *ngSwitchCase="'textarea'">
+                                <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
+                                <mat-form-field style="width: 100%;" appearance="outline">
+                                    <mat-label>{{ field.label }}</mat-label>
+                                    <textarea matInput [required]="field.required"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+    
+                </form>
+            </div>
+    
+    
+            <div fxLayout="row" fxLayoutGap="15">
+                <span class="spacer"></span>
+                <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+                <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+        </mat-step>
+    
+        <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>Intruccion Final</ng-template>
+    
+            <div>
+                <h2 style="color: rgb(68, 141, 66); font-size: 20px;">
+                    Finalizacion de la <strong>Evaluacion de Riesgo</strong>
+                </h2>
+                <mat-divider></mat-divider>
+            </div>
+    
+            <div class="guideCol" fxLayout="column" fxLayoutAlign="center center">
+    
+                <div class="advert4">
+                    <p>"Una vez finalizada la entrevista, se procedera a remitir la ficha junto con el expediente tecnico al
+                        juzgado correspondiente, para que emitan las medidas de proteccion pertinentes"</p>
+                </div>
+    
+            </div>
+    
+            <form [formGroup]="controlForm5" fxLayout="column" fxLayoutGap="10" style="padding-top: 10px;">
+                <h3 style="color: rgb(68, 141, 66)"><strong>Observaciones de interes Adicional</strong> </h3>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Descripcion</mat-label>
+                    <textarea matInput formControlName="obser" ></textarea>
+                </mat-form-field>
+               
+            </form>
+    
+            <div fxLayout="row" fxLayoutGap="15">
+                <button mat-raised-button color="primary" >
+                    <mat-icon inline="true" style="color: white;" >print</mat-icon>
+                    Exportar Ficha
+                </button>
+    
+                <button mat-raised-button color="primary" >
+                    <mat-icon inline="true" style="color: white;" >print</mat-icon>
+                    Imprimir Ficha de Valoracion
+                </button>
+    
+            </div>
+    
+    
+            <div fxLayout="row" fxLayoutGap="15">
+                <span class="spacer"></span>
+                <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
+                <button mat-raised-button color="primary" matStepperNext>Guardar</button>
+            </div>
+        </mat-step>
+    
+    </mat-stepper>
+</div>

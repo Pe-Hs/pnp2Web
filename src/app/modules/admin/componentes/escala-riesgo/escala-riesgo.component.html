@@ -1,0 +1,49 @@
+<mat-dialog-content>
+    <div style="padding-bottom: 10px;">
+        <h1>Fecha de Agrecion  - <strong> {{fechaEvento.fecha | date: 'mediumDate'}}</strong> </h1>
+    <mat-divider></mat-divider>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="15">
+        <div fxFlex="50">
+            <span style="font-size: 17px; font-weight: bold;">Escala de Agrecion:</span>
+            <br><br>
+            <p> <strong>1.</strong> Cachetadas, empujones, jalones de pelo o sin lesiones ni dolor prolongado.</p>
+            <p> <strong>2.</strong> Puñetazos, patadas, moretones, cortes y/o dolor prolongado.</p>
+            <p> <strong>3.</strong> Golpiza, golpes muy fuertes, quemaduras o huesos rotos.</p>
+            <p> <strong>4.</strong> Amenaza de usar un arma, lesiones en la cabeza, lesiones internas, o lesiones
+                permanentes.</p>
+            <p> <strong>5.</strong> Uso de arma, heridas por arma (pistola, cuchillo u otros).</p>
+    
+        </div>
+
+        <mat-divider vertical="true"></mat-divider>
+
+        <form fxFlex="50" fxLayout="column" fxLayoutGap="5" [formGroup]="controlForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input matInput formControlName="fecha">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <textarea type="text" matInput formControlName="descripcion"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Escala de Agrecion</mat-label>
+                <input type="number" min="0" matInput formControlName="escala">
+                <mat-error *ngIf="showMess == true">* El valor debe estar entre 1 y 5</mat-error>                
+            </mat-form-field>
+               
+            <button mat-raised-button color="primary" (click)="guardarCambios()">
+                Guardar
+            </button>
+            
+        </form>
+
+    </div>
+
+    <div fxLayout="row" style="padding-top: 20px;" fxLayoutGap="10">
+        <button mat-raised-button (click)="close()" color="warn"> Cerrar </button>
+        <span class="spacer"></span>
+    </div>
+</mat-dialog-content>

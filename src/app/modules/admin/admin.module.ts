@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashBoardComponent } from './pages/dash-board/dash-board.component';
@@ -9,6 +9,7 @@ import { FormulariosComponent } from './pages/formularios/formularios.component'
 import { FichaUnoComponent } from './pages/ficha-uno/ficha-uno.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndicacionesGeneralesComponent } from './componentes/indicaciones-generales/indicaciones-generales.component';
+import { EscalaRiesgoComponent } from './componentes/escala-riesgo/escala-riesgo.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { IndicacionesGeneralesComponent } from './componentes/indicaciones-gener
     DashBoardComponent,
     FormulariosComponent,
     FichaUnoComponent,
-    IndicacionesGeneralesComponent
+    IndicacionesGeneralesComponent,
+    EscalaRiesgoComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,9 @@ import { IndicacionesGeneralesComponent } from './componentes/indicaciones-gener
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class AdminModule { }

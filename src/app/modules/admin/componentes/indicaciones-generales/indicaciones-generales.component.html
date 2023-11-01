@@ -2,7 +2,7 @@
 
     <h2 class="tituloInd">Indicaciones Generales</h2>
     <mat-divider></mat-divider>
-    <div  fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center">
         <p class="indica">
             Antes de iniciar la entrevista, debe tener al alcance el Instructivo para la intervención de la
             Policía Nacional en el marco de la Ley N* 30364 y el instrumento de valoración del riesgo
@@ -19,7 +19,7 @@
         <br>
         <p class="indica">
             Al hablar con la víctima se recomienda el uso de señor o señora, no utilizar diminutivos ni
-            términos infantiles para dirigirse a ella.            
+            términos infantiles para dirigirse a ella.
         </p>
         <br>
         <p class="indica">
@@ -30,9 +30,17 @@
         </p>
     </div>
 
+
+        <form fxLayout="column" fxLayoutGap="5" [formGroup]="controlForm" (ngSubmit)="onFormSubmit()" ngNativeValidate>
+            <mat-slide-toggle formControlName="acceptTerms">He leido las Indicaciones Generales</mat-slide-toggle>
+            <p *ngIf="showMessage" style="color: red;" >* Debe aceptar haber leido las <strong>Indicaciones Generales</strong> </p>
+            <button mat-raised-button color="primary" type="submit">Continuar</button>
+        </form>
+ 
+
     <div fxLayout="row" style="padding-top: 20px;" fxLayoutGap="10">
+        <button mat-raised-button (click)="close()" color="warn"> Cerrar </button>
         <span class="spacer"></span>
-        <button mat-raised-button (click)="close()" color="primary"> Continuar </button>
     </div>
 
 </mat-dialog-content>
