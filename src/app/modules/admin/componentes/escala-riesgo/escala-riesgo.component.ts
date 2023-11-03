@@ -33,8 +33,15 @@ export class EscalaRiesgoComponent implements OnInit {
   }
 
   guardarCambios() {
+    const dataSend = {
+      fecha : this.fechaEvento.fecha,
+      descripcion : this.controlForm.get('descripcion').value,
+      escala: this.controlForm.get('escala').value
+    }
     if(this.controlForm.valid){
-      this.matDialogRef.close(this.controlForm.value)
+      this.matDialogRef.close(dataSend)
+    }else{
+      return;
     }
   }
 

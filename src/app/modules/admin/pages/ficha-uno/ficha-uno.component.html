@@ -247,7 +247,7 @@
                 <mat-table [dataSource]="dataSource">
                     <ng-container matColumnDef="fecha" >
                         <mat-header-cell *matHeaderCellDef >FECHA</mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.fecha | date: 'mediumDate'}} </mat-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fecha | date: 'mediumDate' }} </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="descripcion" >
                         <mat-header-cell *matHeaderCellDef >DESCRIPCION</mat-header-cell>
@@ -259,8 +259,8 @@
                     </ng-container>                     
                     <ng-container matColumnDef="action" >
                         <mat-header-cell *matHeaderCellDef > OPC.</mat-header-cell>
-                        <mat-cell *matCellDef="let element">                            
-                            <button mat-icon-button>
+                        <mat-cell *matCellDef="let element, index as i">                            
+                            <button mat-icon-button (click)="borrarEvento(i)">
                                 <mat-icon [ngStyle]="{'color':'grey'}">delete</mat-icon>
                             </button>
                         </mat-cell>
@@ -439,7 +439,7 @@
             <div fxLayout="row" fxLayoutGap="15">
                 <span class="spacer"></span>
                 <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-                <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+                <button mat-raised-button color="primary" matStepperNext (click)="calcularPuntaje()">Siguiente</button>
             </div>
         </mat-step>
     
@@ -628,23 +628,23 @@
             </form>
     
             <div fxLayout="row" fxLayoutGap="15">
+                
                 <button mat-raised-button color="primary" >
                     <mat-icon inline="true" style="color: white;" >print</mat-icon>
                     Exportar Ficha
                 </button>
     
                 <button mat-raised-button color="primary" >
-                    <mat-icon inline="true" style="color: white;" >print</mat-icon>
+                    <mat-icon inline="true" style="color: white;">print</mat-icon>
                     Imprimir Ficha de Valoracion
                 </button>
     
-            </div>
-    
+            </div>    
     
             <div fxLayout="row" fxLayoutGap="15">
                 <span class="spacer"></span>
                 <button mat-raised-button color="warn" matStepperPrevious>Atras</button>
-                <button mat-raised-button color="primary" matStepperNext>Guardar</button>
+                <button mat-raised-button color="primary" (click)="generarJsonFile()">Guardar</button>
             </div>
         </mat-step>
     

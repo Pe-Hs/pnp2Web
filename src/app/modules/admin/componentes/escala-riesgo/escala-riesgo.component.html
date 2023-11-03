@@ -23,7 +23,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Fecha</mat-label>
-                <input matInput formControlName="fecha" [disabled]="disableInput">
+                <input matInput formControlName="fecha">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
@@ -42,9 +42,7 @@
                     entre 1 y 5</mat-error>
             </mat-form-field>
 
-            <br> <br>
-
-           
+            <br> <br>        
 
             <button  type="submit" mat-raised-button color="primary" (click)="guardarCambios()">
                 Guardar
@@ -56,9 +54,11 @@
         </form>
 
     </div>
-
+   
+</mat-dialog-content>
+<mat-dialog-actions>
     <div fxLayout="row" style="padding-top: 20px;" fxLayoutGap="10">
         <button mat-raised-button (click)="close()" color="warn"> Cerrar </button>
         <span class="spacer"></span>
     </div>
-</mat-dialog-content>
+</mat-dialog-actions>

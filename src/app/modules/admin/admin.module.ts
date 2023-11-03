@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashBoardComponent } from './pages/dash-board/dash-board.component';
@@ -10,8 +10,9 @@ import { FichaUnoComponent } from './pages/ficha-uno/ficha-uno.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndicacionesGeneralesComponent } from './componentes/indicaciones-generales/indicaciones-generales.component';
 import { EscalaRiesgoComponent } from './componentes/escala-riesgo/escala-riesgo.component';
-import { BrowserModule } from '@angular/platform-browser';
+import es from '@angular/common/locales/es';
 
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BrowserModule } from '@angular/platform-browser';
     FlexLayoutModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    {provide: LOCALE_ID, useValue: 'es-PE'}
   ]
 })
 export class AdminModule { }
