@@ -325,14 +325,11 @@
     
             <div style="padding-top: 10px;">
                 <h2 style="color: rgb(68, 141, 66);">
-                    Seleccione evento de <strong>Agrecion</strong>
+                    Edite las Fechas que Indico la <strong>Agraviada</strong>
                 </h2>
-                <mat-divider></mat-divider>
-                <br>
+                <mat-divider></mat-divider>               
             </div>  
-
             <br>
-
             <div class="productos-tabla" >
                 <mat-table [dataSource]="dataSource">
                     <ng-container matColumnDef="fecha" >
@@ -350,7 +347,7 @@
                     <ng-container matColumnDef="action" >
                         <mat-header-cell *matHeaderCellDef > OPC.</mat-header-cell>
                         <mat-cell *matCellDef="let element, index as i"> 
-                            <button mat-icon-button (click)="editarEvento(element)" >
+                            <button mat-icon-button (click)="editarEvento(element, i)" >
                                 <mat-icon [ngStyle]="{'color':'grey'}">edit</mat-icon>
                             </button>
                             <button mat-icon-button (click)="borrarEvento(i)" >

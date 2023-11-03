@@ -10,6 +10,7 @@ import { FichaUnoComponent } from './pages/ficha-uno/ficha-uno.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndicacionesGeneralesComponent } from './componentes/indicaciones-generales/indicaciones-generales.component';
 import { EscalaRiesgoComponent } from './componentes/escala-riesgo/escala-riesgo.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({

@@ -562,12 +562,22 @@ export class FichaUnoComponent implements OnInit {
     this.updateDataSource();
   }
 
-  editarEvento(element : any){
+  editarEvento(element : any, index : number){
     const matDialogConfig = new MatDialogConfig();
 
     matDialogConfig.disableClose = true;
     matDialogConfig.data = element
     this.matDialog.open(EscalaRiesgoComponent, matDialogConfig)
+      .afterClosed().subscribe( resp => {
+        if(resp != undefined){
+          this.dataTable.splice(index, 1, resp)        
+        this.updateDataSource()
+        }else{
+          this.updateDataSource()
+        }        
+      })
+
+    
   }
 
   updateDataSource() {
