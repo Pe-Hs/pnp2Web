@@ -25,7 +25,7 @@ export class EscalaRiesgoComponent implements OnInit {
   ngOnInit(): void {
     const date = this.datePipe.transform(this.fechaEvento.fecha, 'MMM d, y')
     this.controlForm = new FormGroup({
-      fecha: new FormControl(date),
+      fecha: new FormControl({value: date, disabled: true}),
       descripcion: new FormControl(this.fechaEvento.descripcion, [Validators.required]),
       escala: new FormControl(this.fechaEvento.escala, [Validators.required, this.validateNumberRange as ValidatorFn])
     })

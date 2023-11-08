@@ -4,6 +4,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { EscalaRiesgoComponent } from '../../componentes/escala-riesgo/escala-riesgo.component';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { VerificacionFichaComponent } from '../../componentes/verificacion-ficha/verificacion-ficha.component';
+import { DatosOperario } from 'src/app/shared/interfaces/datosOperario';
 
 export interface tablaFechaEvento {
   fecha: string,
@@ -44,27 +46,31 @@ export class FichaUnoComponent implements OnInit {
 
   columnasFechaEvento = ["fecha", "descripcion", "escala", "action"]
 
-  tipoDocList = [
-    { tipo: "DNI" },
-    { tipo: "Carnet Extranjeria", },
-    { tipo: "No Tiene ni recuerda el Numero", },
-    { tipo: "Otro", },
-  ]
-
-  tipoDisList = [
-    { tipo: "Fisica", },
-    { tipo: "Visual", },
-    { tipo: "Auditiva", },
-    { tipo: "Psicosocial", },
-    { tipo: "Intelectual", },
-  ]
-
-  listLengua = [
-    { tipo: "Castellano", },
-    { tipo: "Quechua", },
-    { tipo: "Aymara", },
-    { tipo: "Otro", },
-  ]
+  datosPers = {
+    tipoDocList: [
+      { tipo: "DNI" },
+      { tipo: "Carnet Extranjeria", },
+      { tipo: "No Tiene ni recuerda el Numero", },
+      { tipo: "Otro", },
+    ],
+    tipoDisList: [
+      { tipo: "Fisica", },
+      { tipo: "Visual", },
+      { tipo: "Auditiva", },
+      { tipo: "Psicosocial", },
+      { tipo: "Intelectual", },
+    ],
+    listDisca: [
+      { tipo: "SI", },
+      { tipo: "NO", },
+    ],
+    listLengua: [
+      { tipo: "Castellano", },
+      { tipo: "Quechua", },
+      { tipo: "Aymara", },
+      { tipo: "Otro", },
+    ],
+  }
 
   preguntasValoracion = [
     {
@@ -225,6 +231,126 @@ export class FichaUnoComponent implements OnInit {
   ]
 
   anexoPreguntas = {
+    "formTitle": "Factores de Vulnerabilidad",
+    "formDescription": "Formulario de los factores",
+    "formFields": [
+      {
+        "preguntas": [
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Depende economicamente de su pareja?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+              "COMPARTIMOS GASTOS",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja o ex pareja cumple puntualmente con atender los gastos de alimentación suyo y/o de sus hijos/as",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Piensa o tuvo que interponerle una demanda de alimentos?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI PIENSA INTERPONER DEMANDA",
+              "SI, YA INTERPUSO DEMANDA",
+              "NO"
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja o expareja ha realizado o realiza acciones para apropiarse de sus bienes (casa, dinero, carro, animales, artefactos, sueldo, negocio u otros bienes)? ¿o le restringe o impide el uso de los mismos?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+              "NO APLICA PORQUE NO TIENE BIENES PROPIOS",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja o expareja le ha agredido, insultado y/o excluye (discriminado) por su orientación sexual? La víctima puede reservarse el derecho de contestar",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+              "NO APLICA",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja o expareja le humilla o excluye (discrimina) por su cosmovisión (forma de interpretar el mundo), lengua (lenguas indígenas, acento y forma de hablar una lengua), fenotipo (rasgos físicos y/o color de piel), indumentaria (vestimenta, adornos y accesorios) e identidad étnica (pertenencia aun grupo étnico)?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "En el ámbito étnico? de su pareja",
+              "En el ámbito étnico de ella",
+              "En cualquier otro ámbito",
+              "NO",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja o expareja le humilla o excluye (discrimina) por estar en situación de discapacidad que le impide realizar con facilidad las actividades de la vida diaria?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+              "NO APLICA",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Esta embarazada? [si responde NO, NO PREGUNTAR las siguientes preguntas] ",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja la ha amenazado con abandonarle o su expareja le ha abandonado porque esta embarazada?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+              "NO APLICA (porque no esta embarazada)",
+            ]
+          },
+          {
+            "label": "Seleccione Opcion",
+            "text": "¿Su pareja o expareja le golpea o le ha golpeado en el vientre?",
+            "type": "select",
+            "required": true,
+            "options": [
+              "SI",
+              "NO",
+              "NO APLICA (porque no esta embarazada)",
+            ]
+          },
+        ]
+      },
+    ]
+  }
+
+  anexoPreguntas12 = {
     "formTitle": "Factores de Vulnerabilidad",
     "formDescription": "Formulario de los factores",
     "formFields": [
@@ -408,12 +534,7 @@ export class FichaUnoComponent implements OnInit {
         "label": "¿El denunciado es policía, del Ejército, Fuerzas Armadas o es agente de seguridad, serenazgo o practica algún pasatiempo de riesgo?",
         "type": "slide",
         "checked": false
-      },
-      {
-        "label": "¿En el último año, la violencia física contra usted ha aumentado en gravedad o frecuencia? ",
-        "type": "slide",
-        "checked": false
-      },
+      },      
       {
         "label": "¿El denunciado tiene familiares y/o amistades que han estado en la cárcel o han tenido problemas con la ley? ",
         "type": "slide",
@@ -446,7 +567,8 @@ export class FichaUnoComponent implements OnInit {
 
   constructor(
     private matDialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private datosOpe : DatosOperario,
   ) { }
 
   ngOnInit(): void {
@@ -455,21 +577,50 @@ export class FichaUnoComponent implements OnInit {
     this.maxDate = new Date(this.currentYear, 0, 0);
 
     this.controlForm1 = new FormGroup({
+      tipoDoc: new FormControl('', [Validators.required]),
+      nroDocumento: new FormControl({value: '', disabled: true}, [Validators.required, Validators.pattern('^[0-9]+$')]),
       nombreCompleto: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
       apePaterno: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
       apeMaterno: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
       edad: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-      nroDocumento: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-      nroHijos: new FormControl('', [Validators.pattern('^[0-9]+$')]),
-      tipoDoc: new FormControl('', [Validators.required]),
       ocupa: new FormControl('', [Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
-      discap: new FormControl({ value: '', disabled: this.disableDisca.value! }, [Validators.required]),
+      nroHijos: new FormControl('', [Validators.pattern('^[0-9]+$')]),
+      preDiscap: new FormControl('', [Validators.required]),
+      discap: new FormControl({value: '', disabled: true}, [Validators.required]),
       tipoLengua: new FormControl('', [Validators.required]),
-      especLengua: new FormControl('', [Validators.required]),
+      especLengua: new FormControl({value: '', disabled: true}, [Validators.required]),
+      especEtnia: new FormControl('', [Validators.required]),
+    })
+
+    this.controlForm1.controls['tipoDoc'].valueChanges.subscribe((value: any) => {
+      if (value === "No Tiene ni recuerda el Numero") {
+        this.controlForm1.get('nroDocumento').setValue("")
+        this.controlForm1.controls['nroDocumento'].disable()
+      } else {
+        this.controlForm1.controls['nroDocumento'].enable()
+      }
+    })
+
+    this.controlForm1.controls['tipoLengua'].valueChanges.subscribe((value: any) => {
+      if (value === "Otro") {
+        this.controlForm1.controls['especLengua'].enable()
+      } else {
+        this.controlForm1.get('especLengua').setValue("")
+        this.controlForm1.controls['especLengua'].disable()
+      }
+    })
+
+    this.controlForm1.controls['preDiscap'].valueChanges.subscribe((value: any) => {
+      if (value === "SI") {
+        this.controlForm1.controls['discap'].enable()
+      } else {
+        this.controlForm1.get('discap').setValue("")
+        this.controlForm1.controls['discap'].disable()
+      }
     })
 
     this.controlForm2 = new FormGroup({
-      secondCtrl: new FormControl('', [Validators.required])
+      fechaEvento: new FormControl('', [Validators.required])
     })
 
     this.controlForm3 = new FormGroup({
@@ -516,6 +667,10 @@ export class FichaUnoComponent implements OnInit {
     })
   }
 
+  test() {
+    console.log(this.controlForm4.value);
+  }
+
   onFormSubmit() {
     //alert(JSON.stringify(this.controlForm3.value, null, 2));
     this.toggleDivPuntaje = true
@@ -550,11 +705,11 @@ export class FichaUnoComponent implements OnInit {
   }
 
   addFecha() {
-    if(this.controlForm2.invalid){
+    if (this.controlForm2.invalid) {
       return;
     }
     const newDate = {
-      "fecha": this.controlForm2.get("secondCtrl").value,
+      "fecha": this.controlForm2.get("fechaEvento").value,
       "descripcion": "Descripcion ",
       "escala": 0
     }
@@ -590,30 +745,62 @@ export class FichaUnoComponent implements OnInit {
   }
 
   generarJsonFile() {
-    if (this.controlForm1.invalid) {
-      const snackBarConfig = new MatSnackBarConfig();
-      snackBarConfig.duration = 3 * 1000;
-      snackBarConfig.panelClass = ['snackBar-validator'];
-      this.snackBar.open('Ha dejado un campo Vacio, Verifique por favor... ', 'cerrar', snackBarConfig)
-      return
-    }
+    // if (this.controlForm1.invalid) {
+    //   const snackBarConfig = new MatSnackBarConfig();
+    //   snackBarConfig.duration = 3 * 1000;
+    //   snackBarConfig.panelClass = ['snackBar-validator'];
+    //   this.snackBar.open('Ha dejado un campo Vacio, Verifique por favor... ', 'cerrar', snackBarConfig)
+    //   return
+    // }
     // const dniVic = this.controlForm1.get('nroDocumento').value
+    const matDialogConfig = new MatDialogConfig();
 
-    // Convert the data to JSON format.
-    const data = { test: "test1" }
-    const dataJson = JSON.stringify(data);
+    matDialogConfig.disableClose = true;
 
-    // Create a blob object from the JSON data.
-    const blob = new Blob([dataJson], { type: 'application/json' });
+    this.matDialog.open(VerificacionFichaComponent, matDialogConfig)
+      .afterClosed().subscribe(resp => {
+        if (resp == 1) {
+          return
+        } else {
+          const data = {
+            datosOpe: [
+              this.datosOpe.datos[0]
+            ],
+            datosVic: [
+              this.controlForm1.value
+            ],
+            control2: [
+              {
+                datosTabla: this.dataTable
+              }
+            ],
+            escalaRiesgo: [
+              {
+                preguntas: [this.controlForm3.value],
+                puntaje: this.puntajeScore
+              },
+            ],
+            control4: [
+              this.controlForm4.value
+            ],
+            observacionFinal: this.controlForm5.get('obser').value
+          }
+          const dataJson = JSON.stringify(data);
 
-    // Download the blob object as a file.
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'data.json';
-    link.click();
+          // Create a blob object from the JSON data.
+          const blob = new Blob([dataJson], { type: 'application/json' });
+
+          // Download the blob object as a file.
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const dateNow = new Date().getTime()
+          link.href = url;
+          link.download = `data-${dateNow}.json`;
+          link.click();
+        }
+
+      })
 
   }
-
 
 }

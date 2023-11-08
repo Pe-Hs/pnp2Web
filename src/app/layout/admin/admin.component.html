@@ -8,7 +8,22 @@
             <img class="logo-inverted" src="assets/pnp-logo.png">
             <div fxLayout="column" fxLayoutAlign="center " >
                 <span class="pnpTitle"> POLICIA NACIONAL DEL PERU</span>
-                <span class="pnpDistrito"> -- Distrito -- </span>
+                <span class="pnpDistrito"> {{distrito}} </span>
+            </div>
+        </div>
+
+        <div class="separator" fxLayout="row" fxLayoutAlign="center center">
+            <mat-divider></mat-divider>
+        </div>
+
+        <div class="mini-profile" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10">
+            <img [src]="imgOpe" >
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5">
+                <span> <strong>{{apellidoOpe}}</strong> </span>
+                <div class="rol-profile" fxLayout="row" fxLayoutGap="5" fxLayoutAlign="start center">
+                    <div class="led"></div>
+                    <span>{{rangoOpe}}</span>
+                </div>
             </div>
         </div>
 
@@ -40,6 +55,13 @@
                     </div>
                 </mat-list-option>
 
+                <mat-list-option routerLink="/admin/formularios">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" class="iconNavList">
+                        <span><mat-icon inline="true">description</mat-icon></span>
+                        <h2>Archivos</h2>
+                    </div>
+                </mat-list-option>
+
 
             </mat-selection-list>
         </div>
@@ -49,8 +71,8 @@
     <div style="padding: 10px;">
 
         <mat-toolbar [class.mat-elevation-z2]="true" style="border-radius: 20px;">
-            <mat-toolbar-row>
-
+            <mat-toolbar-row >
+               
                 <div>
                     <button (click)="sidenav.toggle()" mat-icon-button>
                         <mat-icon>menu</mat-icon>
@@ -65,6 +87,7 @@
 
                 <span class="spacer"></span>
 
+              
                 <button mat-icon-button (click)="logout()">
                     <mat-icon>logout</mat-icon>
                 </button>

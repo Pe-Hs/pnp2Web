@@ -15,6 +15,13 @@
     border-top-color: rgb(187, 187, 187);
     border-top-width: 2px;
     width: 200px;
+    padding-bottom: 10px;
+}
+
+input[matinput]::-webkit-outer-spin-button,
+input[matinput]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .guideCol {
@@ -22,20 +29,17 @@
 }
 
 .guideCol2 {
-
     padding-bottom: 20px;
 }
-
 
 .advert {
     border-radius: 10px;
     padding: 15px;
     align-content: center;
-
 }
 
 .advert p {
-    margin: 0;
+    margin: 0px;
     color: #4B4B4B;
     font-weight: bold;
     font-size: 16px;
@@ -78,11 +82,12 @@
     font-size: 16px;
 }
 
-.productos-tabla{
+.productos-tabla {
     padding: 10px;
 }
 
-mat-header-cell, mat-cell{
+mat-header-cell,
+mat-cell {
     justify-content: center;
 }
 
@@ -178,10 +183,9 @@ mat-header-cell, mat-cell{
     align-content: center;
 }
 
-.anexo2Slide{
+.anexo2Slide {
     width: 80%;
 }
-
 
 mat-icon {
     color: rgb(170, 170, 170);

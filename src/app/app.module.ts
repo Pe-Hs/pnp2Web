@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
+import { DatosOperario } from './shared/interfaces/datosOperario';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.co
     FlexLayoutModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    DatosOperario
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

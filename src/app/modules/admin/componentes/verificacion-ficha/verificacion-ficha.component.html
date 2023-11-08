@@ -1,0 +1,44 @@
+<mat-dialog-content>
+
+    <h2 class="tituloInd">¿Está seguro de continuar?</h2>
+    <mat-divider></mat-divider>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <p class="indica">
+            Por favor, tenga en cuenta que una vez que haga clic en <strong>"Continuar"</strong>, los datos ingresados en este formulario
+            no podrán ser modificados en el futuro. Le recomendamos revisar minuciosamente la información antes de
+            proceder.
+        </p>
+        <br>
+        <!-- <p class="indica2">
+            La habitación donde se realice la entrevista debe tener suficiente luz y poco ruido alrededor.
+            De igual forma, se debe tomar en cuenta algunas pautas de comunicación en el caso de
+            personas con problemas de disminución de la audición / hipoacusia”.
+        </p> -->
+        <!-- <br>
+        <p class="indica">
+            Al hablar con la víctima se recomienda el uso de señor o señora, no utilizar diminutivos ni
+            términos infantiles para dirigirse a ella.
+        </p>
+        <br>
+        <p class="indica">
+            El registro de la información y la valoración de los factores de riesgo es responsabilidad de la
+            persona operadora del servicio, se puede realizar después de la atención inicial. La valoración
+            del riesgo es el resultado del análisis realizado por la persona operadora del servicio, no es una
+            lista de chequeo.
+        </p> -->
+    </div>
+
+
+    <form fxLayout="column" fxLayoutGap="5" [formGroup]="controlForm" (ngSubmit)="onFormSubmit()" ngNativeValidate>
+        <mat-slide-toggle formControlName="acceptTerms">He leido la Advertencia</mat-slide-toggle>
+        <p *ngIf="showMessage" style="color: red;">* Debe aceptar haber leido  <strong>Advertencia</strong> </p>
+        <button mat-raised-button color="primary" type="submit">Continuar</button>
+    </form>
+
+
+    <div fxLayout="row" style="padding-top: 20px;" fxLayoutGap="10">
+        <button type="button" mat-raised-button (click)="close()" color="warn"> Cerrar </button>
+        <span class="spacer"></span>
+    </div>
+
+</mat-dialog-content>

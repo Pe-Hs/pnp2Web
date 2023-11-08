@@ -1,4 +1,4 @@
-interface DatosPersonales {
+export interface DatosPersonales {
     "formTitle": "Datos Personales",
     "formDescription": "Formulario de los Datos Persionales de la Victima",
     "formFields": [

@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndicacionesGeneralesComponent } from './componentes/indicaciones-generales/indicaciones-generales.component';
 import { EscalaRiesgoComponent } from './componentes/escala-riesgo/escala-riesgo.component';
 import es from '@angular/common/locales/es';
+import { VerificacionFichaComponent } from './componentes/verificacion-ficha/verificacion-ficha.component';
 
 registerLocaleData(es);
 
@@ -20,7 +21,8 @@ registerLocaleData(es);
     FormulariosComponent,
     FichaUnoComponent,
     IndicacionesGeneralesComponent,
-    EscalaRiesgoComponent
+    EscalaRiesgoComponent,
+    VerificacionFichaComponent
   ],
   imports: [
     CommonModule,

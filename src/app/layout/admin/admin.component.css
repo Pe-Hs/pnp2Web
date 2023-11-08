@@ -43,8 +43,8 @@
 }
 
 .img-avatar {
-    height: 35px;
-    width: 35px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -67,7 +67,6 @@
     color: white;
 }
 
-
 .iconNavList mat-icon {
     color: white;
     font-size: 20px;
@@ -80,20 +79,14 @@
     font-size: 15px;
 }
 
-.separator mat-divider {
-    border-top-color: #d3b530b9;
-    border-top-width: 2px;
-    width: 200px;
-}
-
 .mini-profile {
     padding: 15px;
 }
 
 .mini-profile img {
-    width: 75px;
-    height: 80px;
-    border-radius: 10px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
 }
 
 .mini-profile span {
@@ -112,33 +105,28 @@
     height: 8px;
     background-color: #ABFF00;
     border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 1px 1px,
-        inset #304701 0 1px 3px, #89FF00 0 1px 4px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 1px 1px, 
+    inset #304701 0 1px 3px, #89FF00 0 1px 4px;
 }
 
-.miniProducto {
-    height: 40px;
-    width: 40px;
-    object-fit: cover;
+.separator mat-divider {
+    border-top-color: #d3b530b9;
+    border-top-width: 2px;
+    width: 200px;
 }
 
-.productoh3 {
+.toolBar-acc{
+    background-color: yellow;
+    padding: 5px;
+}
+
+.acc-nom{
     margin: 0px;
-    font-weight: bold;
-    background-color: rgba(253, 163, 104, 0.664);
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 20px;
+    font-size: 15px;
 }
 
-.productoh4 {
+.acc-ran{
     margin: 0px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
-.productoh5 {
-    margin: 0px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #777777;
-}
