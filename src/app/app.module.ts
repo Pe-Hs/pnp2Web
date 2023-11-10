@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { NotFoundPageComponent } from './shared/not-found-page/not-found-page.component';
 import { DatosOperario } from './shared/interfaces/datosOperario';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DatosOperario } from './shared/interfaces/datosOperario';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     FlexLayoutModule,
     MaterialModule
   ],

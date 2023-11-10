@@ -12,6 +12,7 @@ import { IndicacionesGeneralesComponent } from './componentes/indicaciones-gener
 import { EscalaRiesgoComponent } from './componentes/escala-riesgo/escala-riesgo.component';
 import es from '@angular/common/locales/es';
 import { VerificacionFichaComponent } from './componentes/verificacion-ficha/verificacion-ficha.component';
+import { ArchivosComponent } from './pages/archivos/archivos.component';
 
 registerLocaleData(es);
 
@@ -22,7 +23,8 @@ registerLocaleData(es);
     FichaUnoComponent,
     IndicacionesGeneralesComponent,
     EscalaRiesgoComponent,
-    VerificacionFichaComponent
+    VerificacionFichaComponent,
+    ArchivosComponent
   ],
   imports: [
     CommonModule,

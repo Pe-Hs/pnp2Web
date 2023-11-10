@@ -209,7 +209,7 @@
 
             <div fxLayout="row">
                 <span class="spacer"></span>
-                <button mat-raised-button color="primary" matStepperNext >Siguiente</button>
+                <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
             </div>
 
         </mat-step>
@@ -500,35 +500,195 @@
             <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="5">
                 <form [formGroup]="controlForm4" class="anexo2">
 
-                    
-                    <div *ngFor="let item of anexoPreguntas.formFields"> 
+                    <div *ngFor="let item of anexoPreguntas.formFields.slice(0,1)">
 
-                        <ng-container *ngFor="let preg of item.preguntas, index as i">
-
-                            <div>
-                                <p> <strong> {{i + 1 +'. - '}} </strong> {{preg.text}} </p>
-                            </div>
-
-                            <ng-container [ngSwitch]="preg.type">
-
-                                <div *ngSwitchCase="'select'">
-
-                                    <mat-form-field style="width: 100%;" appearance="outline">
-                                        <mat-label>{{ preg.label }}</mat-label>
-                                        <mat-select [formControlName]="'preg' + i">
-                                            <mat-option *ngFor="let option of preg.options" [value]="option">
-                                                {{option}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
+                        <div>
+                            <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                                {{item.subTitle}}
+                            </h2>
+                            <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
+                                {{item.indicacion}}
+                            </h3>
+    
+                            <ng-container *ngFor="let preg of item.preguntas, index as i">
+                                <div>
+                                    <p> <strong> {{i + 1 +'. - '}} </strong> {{preg.text}} </p>
                                 </div>
-
+    
+                                <ng-container [ngSwitch]="preg.type">
+    
+                                    <div *ngSwitchCase="'select'">
+    
+                                        <mat-form-field style="width: 100%;" appearance="outline">
+                                            <mat-label>{{ preg.label }}</mat-label>
+                                            <mat-select [formControlName]="'seccion1preg' + i">
+                                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                                <mat-option *ngFor="let option of preg.options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+    
+                                    </div>
+    
+                                </ng-container>
+    
                             </ng-container>
+                        </div>
 
-                        </ng-container>
+                    </div>
 
-                    </div>                    
+                    <div *ngFor="let item of anexoPreguntas.formFields.slice(1,2)">
+
+                        <div>
+                            <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                                {{item.subTitle}}
+                            </h2>
+                            <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
+                                {{item.indicacion}}
+                            </h3>
+    
+                            <ng-container *ngFor="let preg of item.preguntas, index as i">
+                                <div>
+                                    <p> <strong> {{i + 5 +'. - '}} </strong> {{preg.text}} </p>
+                                </div>
+    
+                                <ng-container [ngSwitch]="preg.type">
+    
+                                    <div *ngSwitchCase="'select'">
+    
+                                        <mat-form-field style="width: 100%;" appearance="outline">
+                                            <mat-label>{{ preg.label }}</mat-label>
+                                            <mat-select [formControlName]="'seccion2preg' + i">
+                                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                                <mat-option *ngFor="let option of preg.options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+    
+                                    </div>
+    
+                                </ng-container>
+    
+                            </ng-container>
+                        </div>
+
+                    </div>
+
+                    <div *ngFor="let item of anexoPreguntas.formFields.slice(2,3)">
+
+                        <div>
+                            <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                                {{item.subTitle}}
+                            </h2>
+                            <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
+                                {{item.indicacion}}
+                            </h3>
+    
+                            <ng-container *ngFor="let preg of item.preguntas, index as i">
+                                <div>
+                                    <p> <strong> {{i + 6 +'. - '}} </strong> {{preg.text}} </p>
+                                </div>
+    
+                                <ng-container [ngSwitch]="preg.type">
+    
+                                    <div *ngSwitchCase="'select'">
+    
+                                        <mat-form-field style="width: 100%;" appearance="outline">
+                                            <mat-label>{{ preg.label }}</mat-label>
+                                            <mat-select [formControlName]="'seccion3preg' + i">
+                                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                                <mat-option *ngFor="let option of preg.options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+    
+                                    </div>
+    
+                                </ng-container>
+    
+                            </ng-container>
+                        </div>
+
+                    </div>
+
+                    <div *ngFor="let item of anexoPreguntas.formFields.slice(3,4)">
+
+                        <div>
+                            <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                                {{item.subTitle}}
+                            </h2>
+                            <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
+                                {{item.indicacion}}
+                            </h3>
+    
+                            <ng-container *ngFor="let preg of item.preguntas, index as i">
+                                <div>
+                                    <p> <strong> {{i + 7 +'. - '}} </strong> {{preg.text}} </p>
+                                </div>
+    
+                                <ng-container [ngSwitch]="preg.type">
+    
+                                    <div *ngSwitchCase="'select'">
+    
+                                        <mat-form-field style="width: 100%;" appearance="outline">
+                                            <mat-label>{{ preg.label }}</mat-label>
+                                            <mat-select [formControlName]="'seccion4preg' + i">
+                                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                                <mat-option *ngFor="let option of preg.options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+    
+                                    </div>
+    
+                                </ng-container>
+    
+                            </ng-container>
+                        </div>
+
+                    </div>
+
+                    <div *ngFor="let item of anexoPreguntas.formFields.slice(4,5)">
+
+                        <div>
+                            <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
+                                {{item.subTitle}}
+                            </h2>
+                            <h3 style="color: rgb(13, 100, 10); margin: 2px; font-weight: bold; padding-bottom: 5px;">
+                                {{item.indicacion}}
+                            </h3>
+    
+                            <ng-container *ngFor="let preg of item.preguntas, index as i">
+                                <div>
+                                    <p> <strong> {{i + 8 +'. - '}} </strong> {{preg.text}} </p>
+                                </div>
+    
+                                <ng-container [ngSwitch]="preg.type">
+    
+                                    <div *ngSwitchCase="'select'">
+    
+                                        <mat-form-field style="width: 100%;" appearance="outline">
+                                            <mat-label>{{ preg.label }}</mat-label>
+                                            <mat-select [formControlName]="'seccion5preg' + i">
+                                                <mat-option [value]="null" disabled>Elija una Opcion</mat-option>
+                                                <mat-option *ngFor="let option of preg.options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+    
+                                    </div>
+    
+                                </ng-container>
+    
+                            </ng-container>
+                        </div>
+
+                    </div>
 
                 </form>
 
@@ -562,7 +722,7 @@
             </div>
 
             <div fxLayout="column" fxLayoutAlign="start center">
-                <form style="padding-top: 15px;" [formGroup]="controlForm5" class="anexo2">
+                <form style="padding-top: 15px;" [formGroup]="controlForm41" class="anexo2">
 
                     <h2 style="color: rgb(13, 100, 10); margin: 2px; padding-bottom: 10px;">
                         Ubicacion
@@ -575,7 +735,7 @@
                                 <p> <strong> {{i + 1 +'.- '}} </strong> {{field.text}} </p>
                                 <mat-form-field style="width: 100%;" appearance="outline">
                                     <mat-label>{{ field.label }}</mat-label>
-                                    <textarea matInput [required]="field.required"></textarea>
+                                    <textarea matInput [formControlName]="'seccion1preg' + i"></textarea>
                                 </mat-form-field>
                             </div>
                         </ng-container>
@@ -596,7 +756,7 @@
 
                             <div>
                                 <mat-label class="beforeSlide">NO</mat-label>
-                                <mat-slide-toggle color="primary">
+                                <mat-slide-toggle [formControlName]="'seccion2preg' + i" color="primary">
                                     <strong>SI</strong>
                                 </mat-slide-toggle>
                             </div>
@@ -615,7 +775,7 @@
                                 <p> <strong> {{i + 8 +'.- '}} </strong> {{field.text}} </p>
                                 <mat-form-field style="width: 100%;" appearance="outline">
                                     <mat-label>{{ field.label }}</mat-label>
-                                    <textarea matInput [required]="field.required"></textarea>
+                                    <textarea matInput [formControlName]="'seccion3preg' + i"></textarea>
                                 </mat-form-field>
                             </div>
                         </ng-container>

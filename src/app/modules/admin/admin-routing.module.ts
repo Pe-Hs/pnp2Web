@@ -4,6 +4,7 @@ import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { NotFoundPageComponent } from 'src/app/shared/not-found-page/not-found-page.component';
 import { FormulariosComponent } from './pages/formularios/formularios.component';
 import { FichaUnoComponent } from './pages/ficha-uno/ficha-uno.component';
+import { ArchivosComponent } from './pages/archivos/archivos.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
         ]
       },
       { path: 'ficha1',      component: FichaUnoComponent},
+      { path: 'archivo',     component: ArchivosComponent},
       { path: '**',          component: NotFoundPageComponent},
      
     ]

@@ -1,0 +1,94 @@
+<div class="productos-container" >
+    
+    <h1 style="margin: 0;">Lista de <strong>Archivos</strong> </h1>
+    <mat-divider></mat-divider>
+
+    <div class="dashProductos" fxLayout="row" fxLayoutGap="10" fxLayoutAlign="center">
+       
+
+        <mat-card style="background-color: rgb(93, 53, 236);" fxFlex="20" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="transform: scale(2); padding-left: 10px; color: rgba(255, 255, 255, 0.568);">menu_book</mat-icon>
+            <div fxLayout="column">
+                <span> <strong> {{nroInsumos}} </strong> </span>
+                <h3>Total de Insumos</h3>
+            </div>
+        </mat-card>
+
+        <mat-card style="background-color: rgb(109, 175, 71);"  fxFlex="20" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="transform: scale(2); padding-left: 10px; color: rgba(255, 255, 255, 0.568);">trending_up</mat-icon>
+            <div fxLayout="column">
+                <span> <strong>{{insDisponible}}</strong> </span>
+                <h3>Disponibles</h3>
+            </div>
+
+        </mat-card>
+
+        <mat-card style="background-color: rgb(226, 181, 31);" fxFlex="20" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="transform: scale(2); padding-left: 10px; color: rgba(255, 255, 255, 0.568);">trending_down</mat-icon>
+            <div fxLayout="column">
+                <span> <strong>{{insPorTerminar}}</strong> </span>
+                <h3>Por Terminar</h3>
+            </div>
+
+        </mat-card>
+
+        <mat-card style="background-color: rgb(255, 100, 100);" fxFlex="20" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-icon style="transform: scale(2); padding-left: 10px; color: rgba(255, 255, 255, 0.568);" >error</mat-icon>
+            <div fxLayout="column">
+                <span><strong> {{sinStock }} </strong> </span>
+                <h3>Sin Stock</h3>
+            </div>
+        </mat-card>
+
+       
+    </div>
+
+    <div class="action-bar" fxLayout="row" fxLayoutGap="10">
+        <button mat-flat-button color="primary" (click)="addProveedor()" >
+            <mat-icon inline="true" style="font-size: 20px; color: white;">inventory_2</mat-icon>
+            Lista de Formularios
+        </button>
+    </div>  
+
+    <div class="productos-tabla" >
+        <mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="createdAt" >
+                <mat-header-cell *matHeaderCellDef >FECH. CREAC.</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.createdAt | date: 'short'}} </mat-cell>
+            </ng-container> 
+            <ng-container matColumnDef="nroFicha" >
+                <mat-header-cell *matHeaderCellDef >NRO. FICHA.</mat-header-cell>
+                <mat-cell *matCellDef="let element"> <strong> {{element.nroFicha}} </strong>  </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="apellVic" >
+                <mat-header-cell *matHeaderCellDef >APELL. VICT.</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.apellVic}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="nivEsca" >
+                <mat-header-cell *matHeaderCellDef >NIV. RIESGO</mat-header-cell>
+                <mat-cell *matCellDef="let element" > 
+                    <span class="stockContainer" [ngStyle]="{'background-color': 
+                    element.stock > 0 &&  element.stock < 10 ? 'rgb(247, 238, 116)' : 
+                    element.stock == 0 ? 'rgb(190, 102, 102)' : 
+                    element.stock >= 10 ? '#ABFF00' : ''}"> <strong> {{element.nivEsca}} </strong> </span>
+                </mat-cell>
+            </ng-container>                    
+            <ng-container matColumnDef="actions" >
+                <mat-header-cell *matHeaderCellDef > OPC.</mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button (click)="detalleInsumo(element)">
+                        <mat-icon [ngStyle]="{'color':'grey'}">info</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="detalleInsumo(element)">
+                        <mat-icon [ngStyle]="{'color':'grey'}">download</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="displayColumns" ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayColumns " ></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+    </div>
+    
+</div>

@@ -6,6 +6,7 @@ import { EscalaRiesgoComponent } from '../../componentes/escala-riesgo/escala-ri
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { VerificacionFichaComponent } from '../../componentes/verificacion-ficha/verificacion-ficha.component';
 import { DatosOperario } from 'src/app/shared/interfaces/datosOperario';
+import { ArchivoServiceService } from 'src/app/services/archivo-service.service';
 
 export interface tablaFechaEvento {
   fecha: string,
@@ -25,6 +26,7 @@ export class FichaUnoComponent implements OnInit {
   controlForm2: FormGroup | any
   controlForm3: FormGroup | any
   controlForm4: FormGroup | any
+  controlForm41: FormGroup | any
   controlForm5: FormGroup | any
 
   disableDisca = new FormControl(false)
@@ -230,7 +232,7 @@ export class FichaUnoComponent implements OnInit {
 
   ]
 
-  anexoPreguntas = {
+  anexoPreguntas12 = {
     "formTitle": "Factores de Vulnerabilidad",
     "formDescription": "Formulario de los factores",
     "formFields": [
@@ -350,7 +352,7 @@ export class FichaUnoComponent implements OnInit {
     ]
   }
 
-  anexoPreguntas12 = {
+  anexoPreguntas = {
     "formTitle": "Factores de Vulnerabilidad",
     "formDescription": "Formulario de los factores",
     "formFields": [
@@ -534,7 +536,7 @@ export class FichaUnoComponent implements OnInit {
         "label": "¿El denunciado es policía, del Ejército, Fuerzas Armadas o es agente de seguridad, serenazgo o practica algún pasatiempo de riesgo?",
         "type": "slide",
         "checked": false
-      },      
+      },
       {
         "label": "¿El denunciado tiene familiares y/o amistades que han estado en la cárcel o han tenido problemas con la ley? ",
         "type": "slide",
@@ -568,7 +570,8 @@ export class FichaUnoComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private snackBar: MatSnackBar,
-    private datosOpe : DatosOperario,
+    private datosOpe: DatosOperario,
+    private archivoService : ArchivoServiceService
   ) { }
 
   ngOnInit(): void {
@@ -578,7 +581,7 @@ export class FichaUnoComponent implements OnInit {
 
     this.controlForm1 = new FormGroup({
       tipoDoc: new FormControl('', [Validators.required]),
-      nroDocumento: new FormControl({value: '', disabled: true}, [Validators.required, Validators.pattern('^[0-9]+$')]),
+      nroDocumento: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.pattern('^[0-9]+$')]),
       nombreCompleto: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
       apePaterno: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
       apeMaterno: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
@@ -586,9 +589,9 @@ export class FichaUnoComponent implements OnInit {
       ocupa: new FormControl('', [Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
       nroHijos: new FormControl('', [Validators.pattern('^[0-9]+$')]),
       preDiscap: new FormControl('', [Validators.required]),
-      discap: new FormControl({value: '', disabled: true}, [Validators.required]),
+      discap: new FormControl({ value: '', disabled: true }, [Validators.required]),
       tipoLengua: new FormControl('', [Validators.required]),
-      especLengua: new FormControl({value: '', disabled: true}, [Validators.required]),
+      especLengua: new FormControl({ value: '', disabled: true }, [Validators.required]),
       especEtnia: new FormControl('', [Validators.required]),
     })
 
@@ -650,16 +653,30 @@ export class FichaUnoComponent implements OnInit {
     })
 
     this.controlForm4 = new FormGroup({
-      preg0: new FormControl('', [Validators.required]),
-      preg1: new FormControl('', [Validators.required]),
-      preg2: new FormControl('', [Validators.required]),
-      preg3: new FormControl('', [Validators.required]),
-      preg4: new FormControl('', [Validators.required]),
-      preg5: new FormControl('', [Validators.required]),
-      preg6: new FormControl('', [Validators.required]),
-      preg7: new FormControl('', [Validators.required]),
-      preg8: new FormControl('', [Validators.required]),
-      preg9: new FormControl('', [Validators.required]),
+      seccion1preg0: new FormControl('', [Validators.required]),
+      seccion1preg1: new FormControl('', [Validators.required]),
+      seccion1preg2: new FormControl('', [Validators.required]),
+      seccion1preg3: new FormControl('', [Validators.required]),
+      seccion2preg0: new FormControl('', [Validators.required]),
+      seccion3preg0: new FormControl('', [Validators.required]),
+      seccion4preg0: new FormControl('', [Validators.required]),
+      seccion5preg0: new FormControl('', [Validators.required]),
+      seccion5preg1: new FormControl('', [Validators.required]),
+      seccion5preg2: new FormControl('', [Validators.required]),
+    })
+
+    this.controlForm41 = new FormGroup({     
+        seccion1preg0: new FormControl('', [Validators.required]),
+        seccion1preg1: new FormControl('', [Validators.required]),
+        seccion1preg2: new FormControl('', [Validators.required]),
+        seccion1preg3: new FormControl('', [Validators.required]),
+        seccion2preg0: new FormControl(this.anexoPreguntas2.formFields[4].checked),
+        seccion2preg1: new FormControl(this.anexoPreguntas2.formFields[4].checked),
+        seccion2preg2: new FormControl(this.anexoPreguntas2.formFields[4].checked),
+        seccion3preg0: new FormControl('', [Validators.required]),
+        seccion3preg1: new FormControl('', [Validators.required]),
+        seccion3preg2: new FormControl('', [Validators.required]),
+
     })
 
     this.controlForm5 = new FormGroup({
@@ -745,6 +762,8 @@ export class FichaUnoComponent implements OnInit {
   }
 
   generarJsonFile() {
+    const snackBar = new MatSnackBarConfig();
+    snackBar.duration = 3 * 1000;
     // if (this.controlForm1.invalid) {
     //   const snackBarConfig = new MatSnackBarConfig();
     //   snackBarConfig.duration = 3 * 1000;
@@ -763,28 +782,44 @@ export class FichaUnoComponent implements OnInit {
           return
         } else {
           const data = {
-            datosOpe: [
-              this.datosOpe.datos[0]
-            ],
-            datosVic: [
-              this.controlForm1.value
-            ],
-            control2: [
-              {
-                datosTabla: this.dataTable
-              }
-            ],
-            escalaRiesgo: [
-              {
-                preguntas: [this.controlForm3.value],
-                puntaje: this.puntajeScore
-              },
-            ],
-            control4: [
-              this.controlForm4.value
-            ],
-            observacionFinal: this.controlForm5.get('obser').value
+            dniVic : this.controlForm1.get('nroDocumento').value,
+            nroFicha: "27050",
+            apellVic : this.controlForm1.get('apePaterno').value +' ' + this.controlForm1.get('apeMaterno').value,
+            nivEsca : this.puntajeScore,
+            data : {
+              datosOpe: [
+                this.datosOpe.datos[0]
+              ],
+              datosVic: [
+                this.controlForm1.value
+              ],
+              control2: [
+                {
+                  datosTabla: this.dataTable
+                }
+              ],
+              escalaRiesgo: [
+                {
+                  preguntas: [this.controlForm3.value],
+                  puntaje: this.puntajeScore
+                },
+              ],
+              Anexo11: [
+                this.controlForm4.value
+              ],
+              Anexo12: [
+                this.controlForm41.value
+              ],
+              observacionFinal: this.controlForm5.get('obser').value
+            },
+            
           }
+
+          this.archivoService.postFicha( data )
+            .subscribe( resp => {
+              this.snackBar.open(resp.ok, 'Cerrar', snackBar)
+            })
+
           const dataJson = JSON.stringify(data);
 
           // Create a blob object from the JSON data.

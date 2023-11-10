@@ -1,0 +1,43 @@
+.productos-container{
+    padding: 10px;
+}
+
+.action-bar{
+    padding-bottom: 10px;
+}
+
+.productos-tabla{
+    padding: 10px;
+}
+
+mat-header-cell, mat-cell{
+    justify-content: center;
+}
+
+.dashProductos {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.dashProductos span {
+    text-align: end;
+    font-size: 20px;
+    color: white;
+}
+
+.dashProductos h3 {
+    margin: 0px;
+    color: white;
+}
+
+.dashProductos mat-card {
+    width: 150px;
+}
+
+.stockContainer {
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 20px;
+}
